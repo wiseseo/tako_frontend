@@ -1,11 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import AppNavigator from './src/navigation/AppNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import MapNavigator from './src/navigation/AppNavigator';
 
-//const Stack = createStackNavigator();
+const Stack = createStackNavigator();
+
 export default function App() {
   return (
-   <AppNavigator/>
+    <NavigationContainer>
+      <MapNavigator/>
+    </NavigationContainer>
   );
 }
 

@@ -9,6 +9,10 @@ export default function MapScreen({navigation}) {
         title="Go to Details"
         onPress={() => navigation.navigate('MapDetailScreen')}
       />
+      <Button
+        title="설정"
+        onPress={() => navigation.navigate('SettingNavigator', {screen:'SettingScreen'})}
+      />
     </View>
   );
 }

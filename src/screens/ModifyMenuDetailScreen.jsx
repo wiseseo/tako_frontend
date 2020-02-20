@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function MapScreen() {
+export default function ModifyMenuDetailScreen() {
   return (
     <View style={styles.container}>
-      <Text>MapScreen</Text>
+      <Text>ModifyMenuDetailScreen</Text>
     </View>
   );
 }
