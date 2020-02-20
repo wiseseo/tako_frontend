@@ -7,6 +7,13 @@ import RegisterStoreScreen from '../screens/RegisterStoreScreen';
 import RegisterMenuScreen from '../screens/RegisterMenuScreen';
 import RegisterMenuDetailScreen from '../screens/RegisterMenuDetailScreen';
 import SettingScreen from '../screens/SettingScreen';
+import MyStoreScreen from '../screens/MyStoreScreen';
+import MyFavoriteStoreScreen from '../screens/MyFavoriteStoreScreen';
+import ModifySettingScreen from '../screens/ModifySettingScreen';
+import ModifyStoreScreen from '../screens/ModifyStoreScreen';
+import ModifyMenuScreen from '../screens/ModifyMenuScreen';
+import ModifyMenuDetailScreen from '../screens/ModifyMenuDetailScreen';
+
 
 const Stack = createStackNavigator();
 
@@ -35,6 +42,30 @@ function SettingNavigator() {
       <Stack.Screen
         name="SettingScreen"
         component={SettingScreen}
+      />
+      <Stack.Screen
+        name="MyStoreScreen"
+        component={MyStoreScreen}
+      />
+      <Stack.Screen
+        name="MyFavoriteStoreScreen"
+        component={MyFavoriteStoreScreen}
+      />
+      <Stack.Screen
+        name="ModifySettingScreen"
+        component={ModifySettingScreen}
+      />
+      <Stack.Screen
+        name="ModifyStoreScreen"
+        component={ModifyStoreScreen}
+      />
+      <Stack.Screen
+        name="ModifyMenuScreen"
+        component={ModifyMenuScreen}
+      />
+      <Stack.Screen
+        name="ModifyMenuDetailScreen"
+        component={ModifyMenuDetailScreen}
       />
       <Stack.Screen name="RegisterNavigator" component={RegisterNavigator}/>
     </Stack.Navigator>

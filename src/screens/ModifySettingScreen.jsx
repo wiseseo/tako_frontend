@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function ModifySettingScreen() {
+export default function ModifySettingScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text>ModifySettingScreen</Text>
+      <Button
+        title="내정보 수정완료"
+        onPress={() => navigation.pop(1)}
+      />
     </View>
   );
 }

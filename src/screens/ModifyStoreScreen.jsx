@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function ModifyStoreScreen() {
+export default function ModifyStoreScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text>ModifyStoreScreen</Text>
+      <Button
+        title="내가게 수정완료"
+        onPress={() => navigation.pop(1)}
+      />
     </View>
   );
 }

@@ -1,10 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function ModifyMenuScreen() {
+export default function ModifyMenuScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text>ModifyMenuScreen</Text>
+      <Button
+        title="내메뉴 detail 수정"
+        onPress={() => navigation.navigate('ModifyMenuDetailScreen')}
+      />
+      <Button
+        title="내메뉴 수정완료"
+        onPress={() => navigation.pop(1)}
+      />
     </View>
   );
 }
