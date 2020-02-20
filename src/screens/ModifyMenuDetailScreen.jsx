@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import AppNavigator from './src/navigation/AppNavigator';
 
-//const Stack = createStackNavigator();
-export default function App() {
+export default function MapScreen() {
   return (
-   <AppNavigator/>
+    <View style={styles.container}>
+      <Text>MapScreen</Text>
+    </View>
   );
 }
 
