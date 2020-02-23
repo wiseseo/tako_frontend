@@ -1,10 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+
 export default function LoginScreen({navigation}) {
   return (
-    <View style={styles.container}>
+    <View>
       <Text>LoginScreen</Text>
+      <Button
+        title="회원가입"
+        onPress={() => navigation.navigate('SignupScreen')}
+      />
     </View>
   );
 }

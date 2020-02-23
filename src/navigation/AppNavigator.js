@@ -1,6 +1,8 @@
-import React from 'react';
-//import { NavigationContaine } from '@react-navigation/native';
+import React, {useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AuthNavigator from '../navigation/AuthNavigator';
+import SplashScreen from '../screens/auth/SplashScreen';
 import MapScreen from '../screens/MapScreen';
 import MapDetailScreen from '../screens/MapDetailScreen';
 import RegisterStoreScreen from '../screens/RegisterStoreScreen';
@@ -16,6 +18,7 @@ import ModifyMenuDetailScreen from '../screens/ModifyMenuDetailScreen';
 
 
 const Stack = createStackNavigator();
+
 
 function RegisterNavigator() {
   return (
@@ -72,7 +75,8 @@ function SettingNavigator() {
   );
 }
 
-export default function MapNavigator() {
+
+function MapNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -89,15 +93,15 @@ export default function MapNavigator() {
 }
 
 
-/*
-export default function MainNavigator() {
+export default function AppNavigator() {
+  const [userToken, setUserToken] = useState(1);
   return (
-    <Stack.Navigator>
-    <Stack.Screen
-      name="MapNavigator"
-      component={MapNavigator}
-    />
-  </Stack.Navigator>
-  )
+      <NavigationContainer>
+        {userToken == null ? (
+          <AuthNavigator/>
+        ) : (
+          <MapNavigator/>
+        )}
+      </NavigationContainer>
+  );
 }
-*/
