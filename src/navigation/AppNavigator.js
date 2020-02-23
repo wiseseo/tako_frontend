@@ -94,7 +94,8 @@ function MapNavigator() {
 
 
 export default function AppNavigator() {
-  const [userToken, setUserToken] = useState(1);
+  //const [userToken, setUserToken] = useState(1);
+  const userToken = null;
   return (
       <NavigationContainer>
         {userToken == null ? (
