@@ -1,17 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { StackActions } from '@react-navigation/native';
 
 
-
-export default function RegisterMenuDetailScreen({navigation}) {
+export default function StoreInfoScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>RegisterMenuDetailScreen</Text>
-      <Button
-        title="메뉴등록완료"
-        onPress={() => navigation.dispatch(StackActions.pop(1))}
-      />
+      <Text>StoreInfoScreen</Text>
+      <Button onPress={() => navigation.goBack()} title="Dismiss" /> 
     </View>
   );
 }

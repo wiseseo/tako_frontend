@@ -5,6 +5,10 @@ export default function SignupScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text>SignupScreen</Text>
+      <Button
+        title="회원가입"
+        onPress={() => navigation.goBack()}
+      />
     </View>
   );
 }

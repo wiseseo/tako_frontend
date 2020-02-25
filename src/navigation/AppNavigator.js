@@ -2,19 +2,19 @@ import React, {useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AuthNavigator from '../navigation/AuthNavigator';
-import SplashScreen from '../screens/auth/SplashScreen';
+//import SplashScreen from '../screens/auth/SplashScreen';
 import MapScreen from '../screens/MapScreen';
-import MapDetailScreen from '../screens/MapDetailScreen';
 import RegisterStoreScreen from '../screens/RegisterStoreScreen';
 import RegisterMenuScreen from '../screens/RegisterMenuScreen';
-import RegisterMenuDetailScreen from '../screens/RegisterMenuDetailScreen';
+import RegisterMenuFormScreen from '../screens/RegisterMenuFormScreen';
 import SettingScreen from '../screens/SettingScreen';
 import MyStoreScreen from '../screens/MyStoreScreen';
 import MyFavoriteStoreScreen from '../screens/MyFavoriteStoreScreen';
 import ModifySettingScreen from '../screens/ModifySettingScreen';
 import ModifyStoreScreen from '../screens/ModifyStoreScreen';
 import ModifyMenuScreen from '../screens/ModifyMenuScreen';
-import ModifyMenuDetailScreen from '../screens/ModifyMenuDetailScreen';
+import ModifyMenuFormScreen from '../screens/ModifyMenuFormScreen';
+import StoreInfoScreen from '../screens/StoreInfoScreen';
 
 
 const Stack = createStackNavigator();
@@ -32,8 +32,8 @@ function RegisterNavigator() {
         component={RegisterMenuScreen}
       />
       <Stack.Screen
-        name="RegisterMenuDetailScreen"
-        component={RegisterMenuDetailScreen}
+        name="RegisterMenuFormScreen"
+        component={RegisterMenuFormScreen}
       />
     </Stack.Navigator>
   );
@@ -44,8 +44,7 @@ function SettingNavigator() {
     <Stack.Navigator>
       <Stack.Screen
         name="SettingScreen"
-        component={SettingScreen}
-      />
+        component={SettingScreen}/>
       <Stack.Screen
         name="MyStoreScreen"
         component={MyStoreScreen}
@@ -67,10 +66,10 @@ function SettingNavigator() {
         component={ModifyMenuScreen}
       />
       <Stack.Screen
-        name="ModifyMenuDetailScreen"
-        component={ModifyMenuDetailScreen}
+        name="ModifyMenuFormScreen"
+        component={ModifyMenuFormScreen}
       />
-      <Stack.Screen name="RegisterNavigator" component={RegisterNavigator}/>
+      <Stack.Screen name="RegisterNavigator" component={RegisterNavigator} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
@@ -83,11 +82,7 @@ function MapNavigator() {
         name="MapScreen"
         component={MapScreen}
       />
-      <Stack.Screen
-        name="MapDetailScreen"
-        component={MapDetailScreen}
-      />
-      <Stack.Screen name="SettingNavigator" component={SettingNavigator}/>
+      <Stack.Screen name="SettingNavigator" component={SettingNavigator} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
@@ -95,13 +90,16 @@ function MapNavigator() {
 
 export default function AppNavigator() {
   //const [userToken, setUserToken] = useState(1);
-  const userToken = null;
+  const userToken = 1;
   return (
       <NavigationContainer>
         {userToken == null ? (
           <AuthNavigator/>
         ) : (
-          <MapNavigator/>
+          <Stack.Navigator mode="modal" headerMode="float">
+            <Stack.Screen name="MapNavigator" component={MapNavigator} options={{ headerShown: false }}/>
+            <Stack.Screen name="StoreInfoScreen" component={StoreInfoScreen} />
+          </Stack.Navigator>
         )}
       </NavigationContainer>
   );

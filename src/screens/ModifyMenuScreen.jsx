@@ -7,7 +7,7 @@ export default function ModifyMenuScreen({navigation}) {
       <Text>ModifyMenuScreen</Text>
       <Button
         title="내메뉴 detail 수정"
-        onPress={() => navigation.navigate('ModifyMenuDetailScreen')}
+        onPress={() => navigation.navigate('ModifyMenuFormScreen')}
       />
       <Button
         title="내메뉴 수정완료"

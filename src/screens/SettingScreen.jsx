@@ -2,6 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function SettingScreen({navigation}) {
+  navigation.setOptions({
+    headerLeft: () => (
+      <Button
+        onPress={() => navigation.goBack()}
+        title="<-"
+      />
+    ),
+  });
   return (
     <View style={styles.container}>
       <Text>SettingScreen</Text>
@@ -12,10 +20,6 @@ export default function SettingScreen({navigation}) {
       <Button
         title="내 가게"
         onPress={() => navigation.navigate('MyStoreScreen')}
-      />
-      <Button
-        title="가게등록"
-        onPress={() => navigation.navigate('RegisterNavigator',{screen : 'RegisterStoreScreen'})}
       />
       <Button
         title="내정보 수정"

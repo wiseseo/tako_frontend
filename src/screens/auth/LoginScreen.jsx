@@ -7,6 +7,10 @@ export default function LoginScreen({navigation}) {
     <View>
       <Text>LoginScreen</Text>
       <Button
+        title="로그인"
+        onPress={() => navigation.navigate('SignupScreen')}
+      />
+      <Button
         title="회원가입"
         onPress={() => navigation.navigate('SignupScreen')}
       />

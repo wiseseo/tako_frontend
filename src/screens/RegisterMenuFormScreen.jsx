@@ -1,13 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { StackActions } from '@react-navigation/native';
 
-export default function RegisterStoreScreen({navigation}) {
+
+
+export default function RegisterMenuFormScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>RegisterStoreScreen</Text>
+      <Text>RegisterMenuFormScreen</Text>
       <Button
-        title="가게 등록 완료"
-        onPress={() => navigation.navigate('RegisterMenuScreen')}
+        title="메뉴등록완료"
+        onPress={() => navigation.dispatch(StackActions.pop(1))}
       />
     </View>
   );
