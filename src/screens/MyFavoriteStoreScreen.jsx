@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import StoreList from '../components/StoreList';
+import { Container, Content } from 'native-base';
 export default function MyFavoriteStoreScreen() {
   return (
-    <View style={styles.container}>
-      <Text>MyFavoriteStoreScreen</Text>
-    </View>
+    <Container>
+      <Content>
+        <StoreList/>
+      </Content>
+    </Container>
   );
 }
 

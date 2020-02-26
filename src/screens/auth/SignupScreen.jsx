@@ -1,23 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import SignupForm from '../../components/SignupForm';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Footer, FooterTab } from 'native-base';
 
 export default function SignupScreen({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text>SignupScreen</Text>
-      <Button
-        title="회원가입"
-        onPress={() => navigation.goBack()}
-      />
-    </View>
+  <Container>
+    <Content>
+      <Form>
+        <SignupForm/>
+        <Button full onPress={() => navigation.goBack()}>
+          <Text>SignUp</Text>
+        </Button>
+      </Form>
+    </Content>
+  </Container>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+

@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 
@@ -25,4 +25,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+});
+*/
+
+import React  from 'react';
+import LoginForm from '../../components/LoginForm';
+import { StyleSheet  } from 'react-native';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Footer, FooterTab } from 'native-base';
+
+export default function LoginScreen({navigation}) {
+    return (
+      <Container>
+        <Content>
+          <Form style={styles.container}>
+            <LoginForm/>
+            <Button transparent onPress={() => navigation.navigate('SignupScreen')}>
+                  <Text>Sign Up</Text>
+            </Button>
+            <Button full style={styles.bottomButton} onPress={() => navigation.navigate('SignupScreen')}>
+              <Text>Login</Text>
+            </Button>
+          </Form>
+        </Content>
+      </Container>
+    );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-end',
+  },
+
+  bottomButton : {
+    position: 'absolute',
+    bottom:0
+  }
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import StoreList from '../components/StoreList';
 
 export default function MyStoreScreen({navigation}) {
   navigation.setOptions({
@@ -11,8 +12,9 @@ export default function MyStoreScreen({navigation}) {
     ),
   });
   return (
-    <View style={styles.container}>
+    <View>
       <Text>MyStoreScreen</Text>
+      <StoreList/>
       <Button
         title="내가게 수정"
         onPress={() => navigation.navigate('ModifyStoreScreen')}
