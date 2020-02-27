@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import MenuList from '../components/MenuList';
 
 export default function ModifyMenuScreen({navigation}) {
+  const isStoreScreen = false;
   return (
-    <View style={styles.container}>
+    <View>
       <Text>ModifyMenuScreen</Text>
-      <Button
-        title="내메뉴 detail 수정"
-        onPress={() => navigation.navigate('ModifyMenuFormScreen')}
-      />
+      <MenuList navigation={navigation} isStoreScreen={isStoreScreen}/>
       <Button
         title="내메뉴 수정완료"
         onPress={() => navigation.pop(1)}
@@ -17,6 +16,7 @@ export default function ModifyMenuScreen({navigation}) {
   );
 }
 
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -25,3 +25,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/

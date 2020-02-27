@@ -1,19 +1,19 @@
 import React  from 'react';
 import {Container, Item, Input, Label, Content} from 'native-base';
 
-export default function SignupForm() {
+export default function MenuForm() {
     return (
                 <>
                 <Item floatingLabel>
-                    <Label>Username</Label>
+                    <Label>menu</Label>
                     <Input />
                 </Item>
                 <Item floatingLabel>
-                    <Label>Id</Label>
+                    <Label>price</Label>
                     <Input />
                 </Item>
                 <Item floatingLabel>
-                    <Label>Password</Label>
+                    <Label>image</Label>
                     <Input />
                 </Item>
                 </>

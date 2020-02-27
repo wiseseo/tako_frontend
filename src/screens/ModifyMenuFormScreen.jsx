@@ -1,14 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import MenuForm from '../components/MenuForm';
+import { Form } from 'native-base';
 
 export default function ModifyMenuFormScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text>ModifyMenuFormScreen</Text>
-      <Button
-        title="메뉴수정"
-        onPress={() => navigation.pop(1)}
-      />
+      <Form>
+        <MenuForm/>
+        <Button
+          title="메뉴저장"
+          onPress={() => navigation.pop(1)}
+        />
+      </Form>
     </View>
   );
 }

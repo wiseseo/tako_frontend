@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
-
+import MapDetail from '../components/MapDetail';
+import SearchBar from '../components/SearchBar';
 export default function MapScreen({navigation}) {
   navigation.setOptions({
     headerRight: () => (
@@ -11,13 +11,18 @@ export default function MapScreen({navigation}) {
       />
     ),
   });
+
+  const [showMapDetail, setMapDetail] = useState(false);
   return (
     <View style={styles.container}>
-      <Text>MapScreen</Text>
-      <Button
-        title="모달"
-        onPress={() => navigation.navigate('StoreInfoScreen')}
-      />
+    <SearchBar/>
+      <View>
+        <Text onPress={()=>setMapDetail(false)}>MapScreen</Text>
+
+      </View>
+      <Button title="가게닷!" onPress={()=>setMapDetail(true)}>
+        </Button>
+      {showMapDetail && <MapDetail navigation={navigation}/>}
     </View>
   );
 }

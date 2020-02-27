@@ -1,15 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Footer, FooterTab } from 'native-base';
+import StoreForm from '../components/StoreForm';
 
 export default function ModifyStoreScreen({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text>ModifyStoreScreen</Text>
-      <Button
-        title="내가게 수정완료"
-        onPress={() => navigation.pop(1)}
-      />
-    </View>
+    <Container>
+      <Content>
+        <Form>
+          <StoreForm/>
+          <Button
+            full
+            title="가게 수정 완료"
+            onPress={() => navigation.pop(1)}
+          />
+        </Form>
+      </Content>
+    </Container>
   );
 }
 

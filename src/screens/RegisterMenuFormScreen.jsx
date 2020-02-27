@@ -1,21 +1,26 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackActions } from '@react-navigation/native';
-
+import {Form} from 'native-base';
+import MenuForm from '../components/MenuForm';
 
 
 export default function RegisterMenuFormScreen({navigation}) {
   return (
-    <View style={styles.container}>
+    <View >
       <Text>RegisterMenuFormScreen</Text>
-      <Button
-        title="메뉴등록완료"
-        onPress={() => navigation.dispatch(StackActions.pop(1))}
-      />
+      <Form>
+        <MenuForm/>
+        <Button
+          title="메뉴등록완료"
+          onPress={() => navigation.dispatch(StackActions.pop(1))}
+        />
+      </Form>
     </View>
   );
 }
 
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,3 +29,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/

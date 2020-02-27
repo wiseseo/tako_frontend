@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import StoreList from '../components/StoreList';
+import { Container, Content } from 'native-base';
 
 export default function MyStoreScreen({navigation}) {
   navigation.setOptions({
@@ -11,19 +12,14 @@ export default function MyStoreScreen({navigation}) {
       />
     ),
   });
+  const isStoreScreen = true;
   return (
-    <View>
-      <Text>MyStoreScreen</Text>
-      <StoreList/>
-      <Button
-        title="내가게 수정"
-        onPress={() => navigation.navigate('ModifyStoreScreen')}
-      />
-      <Button
-        title="내가게메뉴 수정"
-        onPress={() => navigation.navigate('ModifyMenuScreen')}
-      />
-    </View>
+    <Container>
+      <Content>
+        <StoreList isFavScreen={false} navigation={navigation} isStoreScreen={isStoreScreen}/>
+      </Content>
+    </Container>
+
   );
 }
 

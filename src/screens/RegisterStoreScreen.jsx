@@ -1,18 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Button } from 'react-native';
+import { Container, Content, Form, Item, Input, Label, Text, Footer, FooterTab } from 'native-base';
+import StoreForm from '../components/StoreForm';
 
 export default function RegisterStoreScreen({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text>RegisterStoreScreen</Text>
-      <Button
-        title="가게 등록 완료"
-        onPress={() => navigation.navigate('RegisterMenuScreen')}
-      />
-    </View>
+    <Container>
+      <Content>
+        <Form>
+          <StoreForm/>
+          <Button
+            title="가게 등록 완료"
+            onPress={() => navigation.navigate('RegisterMenuScreen')}
+          />
+        </Form>
+      </Content>
+    </Container>
+    
   );
 }
-
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,3 +28,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/

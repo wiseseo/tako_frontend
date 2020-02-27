@@ -1,5 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import UserInfo from '../components/UserInfo';
+import { List, ListItem, Left, Right, Icon } from 'native-base';
+
 
 export default function SettingScreen({navigation}) {
   navigation.setOptions({
@@ -9,26 +12,44 @@ export default function SettingScreen({navigation}) {
         title="<-"
       />
     ),
+    headerRight: () => (
+      <Button
+        onPress={() => navigation.navigate('ModifySettingScreen',{
+          newSetting: true,
+        })}
+        title="정보수정"
+      />
+    ),
   });
+
+  const newSetting = false;
   return (
-    <View style={styles.container}>
+    <View>
       <Text>SettingScreen</Text>
-      <Button
-        title="내가 좋아하는 가게"
-        onPress={() => navigation.navigate('MyFavoriteStoreScreen')}
-      />
-      <Button
-        title="내 가게"
-        onPress={() => navigation.navigate('MyStoreScreen')}
-      />
-      <Button
-        title="내정보 수정"
-        onPress={() => navigation.navigate('ModifySettingScreen')}
-      />
+      <List>
+        <UserInfo newSetting={newSetting} />
+        <ListItem>
+          <Left>
+            <Text>내가 좋아하는 가게</Text>
+          </Left>
+          <Right>
+            <Icon name="arrow-forward" onPress={() => navigation.navigate('MyFavoriteStoreScreen')}/>
+          </Right>
+        </ListItem>
+        <ListItem>
+          <Left>
+            <Text>내 가게</Text>
+          </Left>
+          <Right>
+            <Icon name="arrow-forward" onPress={() => navigation.navigate('MyStoreScreen')}/>
+          </Right>
+        </ListItem>
+      </List>
     </View>
   );
 }
 
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -37,3 +58,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/
