@@ -24,7 +24,8 @@ export default function StoreList({isFavScreen, navigation, isStoreScreen}) {
                     content={item.content} 
                     key={item.index} 
                     isFavScreen={isFavScreen} 
-                    isStoreScreen={isStoreScreen}/>}
+                    isStoreScreen={isStoreScreen}
+                    />}
                 />
 
     );

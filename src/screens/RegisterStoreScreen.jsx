@@ -1,18 +1,17 @@
 import React from 'react';
 import { Button } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Text, Footer, FooterTab } from 'native-base';
+import { Container, Content, Form } from 'native-base';
 import StoreForm from '../components/StoreForm';
+import StoreButton from '../components/Button/BottomButton/StoreButton';
 
-export default function RegisterStoreScreen({navigation}) {
+export default function RegisterStoreScreen({navigation, route}) {
+  const isRegister  = route.params.isRegister;
   return (
     <Container>
       <Content>
         <Form>
           <StoreForm/>
-          <Button
-            title="가게 등록 완료"
-            onPress={() => navigation.navigate('RegisterMenuScreen')}
-          />
+          <StoreButton isRegister={isRegister} navigation={navigation}/>
         </Form>
       </Content>
     </Container>

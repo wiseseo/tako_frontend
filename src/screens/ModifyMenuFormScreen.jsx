@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import MenuForm from '../components/MenuForm';
+import MenuFormButton from '../components/Button/BottomButton/MenuFormButton';
 import { Form } from 'native-base';
 
 export default function ModifyMenuFormScreen({navigation}) {
@@ -9,10 +10,7 @@ export default function ModifyMenuFormScreen({navigation}) {
       <Text>ModifyMenuFormScreen</Text>
       <Form>
         <MenuForm/>
-        <Button
-          title="메뉴저장"
-          onPress={() => navigation.pop(1)}
-        />
+        <MenuFormButton navigation={navigation}/>
       </Form>
     </View>
   );

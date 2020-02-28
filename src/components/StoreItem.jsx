@@ -19,7 +19,7 @@ export default function StoreItem({navigation ,title, content, isFavScreen, isSt
             </CardItem>
             <DeleteButton/>
             {!isFavScreen && <ModifyButton navigation={navigation} isStoreScreen={isStoreScreen}/>}
-            {!isFavScreen && <Button onPress={() => navigation.navigate('ModifyMenuScreen')}><Text>메뉴편집</Text></Button>}
+            {!isFavScreen && <Button bordered full onPress={() => navigation.navigate('ModifyMenuScreen')}><Text>메뉴편집</Text></Button>}
         </Card>
     );
 }

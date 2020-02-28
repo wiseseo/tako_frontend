@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Button} from 'react-native';
 import MenuList from '../components/MenuList';
+import MenuButton from '../components/Button/BottomButton/MenuButton';
 import { Text } from 'native-base';
-//import { StackActions } from '@react-navigation/native';
+
 
 export default function RegisterMenuScreen({navigation}) {
   navigation.setOptions({
@@ -14,14 +15,12 @@ export default function RegisterMenuScreen({navigation}) {
     ),
   });
   const isRegMenu = true;
+  const isRegister = true;
   return (
     <View>
       <Text>RegisterMenuScreen</Text>
       <MenuList isRegMenu={isRegMenu}/>
-      <Button
-        title="메뉴 등록 완전 완료"
-        onPress={() => navigation.navigate('SettingNavigator', {screen:'MyStoreScreen'})}
-      />
+      <MenuButton isRegister={isRegister} navigation={navigation}/>
     </View>
   );
 }

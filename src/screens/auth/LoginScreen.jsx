@@ -37,7 +37,7 @@ export default function LoginScreen({navigation}) {
     return (
       <Container>
         <Content>
-          <Form style={styles.container}>
+          <Form>
             <LoginForm/>
             <Button transparent onPress={() => navigation.navigate('SignupScreen')}>
                   <Text>Sign Up</Text>
@@ -50,7 +50,7 @@ export default function LoginScreen({navigation}) {
       </Container>
     );
 }
-
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,3 +63,4 @@ const styles = StyleSheet.create({
     bottom:0
   }
 });
+*/

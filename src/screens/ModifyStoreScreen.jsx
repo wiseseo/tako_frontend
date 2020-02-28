@@ -2,18 +2,16 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Container, Content, Form, Item, Input, Label, Button, Text, Footer, FooterTab } from 'native-base';
 import StoreForm from '../components/StoreForm';
+import StoreButton from '../components/Button/BottomButton/StoreButton';
 
-export default function ModifyStoreScreen({navigation}) {
+export default function ModifyStoreScreen({route, navigation}) {
+  const {isRegister} = route.params;
   return (
     <Container>
       <Content>
         <Form>
           <StoreForm/>
-          <Button
-            full
-            title="가게 수정 완료"
-            onPress={() => navigation.pop(1)}
-          />
+          <StoreButton isRegister={isRegister} navigation={navigation}/>
         </Form>
       </Content>
     </Container>

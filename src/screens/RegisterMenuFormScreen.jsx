@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackActions } from '@react-navigation/native';
 import {Form} from 'native-base';
 import MenuForm from '../components/MenuForm';
+import MenuFormButton from '../components/Button/BottomButton/MenuFormButton';
 
 
 export default function RegisterMenuFormScreen({navigation}) {
@@ -11,10 +12,7 @@ export default function RegisterMenuFormScreen({navigation}) {
       <Text>RegisterMenuFormScreen</Text>
       <Form>
         <MenuForm/>
-        <Button
-          title="메뉴등록완료"
-          onPress={() => navigation.dispatch(StackActions.pop(1))}
-        />
+        <MenuFormButton navigation={navigation}/>
       </Form>
     </View>
   );

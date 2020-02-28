@@ -7,7 +7,9 @@ export default function MyStoreScreen({navigation}) {
   navigation.setOptions({
     headerRight: () => (
       <Button
-        onPress={() => navigation.navigate('RegisterNavigator',{screen : 'RegisterStoreScreen'})}
+        onPress={() => navigation.navigate('RegisterNavigator',
+        {screen : 'RegisterStoreScreen',
+        params : {isRegister : true}})} 
         title="가게등록"
       />
     ),

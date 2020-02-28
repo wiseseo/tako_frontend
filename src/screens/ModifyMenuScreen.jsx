@@ -1,17 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import MenuList from '../components/MenuList';
+import MenuButton from '../components/Button/BottomButton/MenuButton';
 
 export default function ModifyMenuScreen({navigation}) {
   const isStoreScreen = false;
+  const isRegister = false;
   return (
     <View>
       <Text>ModifyMenuScreen</Text>
       <MenuList navigation={navigation} isStoreScreen={isStoreScreen}/>
-      <Button
-        title="내메뉴 수정완료"
-        onPress={() => navigation.pop(1)}
-      />
+      <MenuButton isRegister={isRegister} navigation={navigation}/>
     </View>
   );
 }

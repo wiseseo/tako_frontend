@@ -1,14 +1,10 @@
 import React  from 'react';
 import { ListItem, Text, Left, Right, Form, Item, Label, Input } from 'native-base';
-//import {FlatList} from 'react-native';
-//import StoreItem from './StoreItem';
-//import {Container, Content} from 'native-base';
 
 
 export default function UserInfo({newSetting}) {
     if(!newSetting) {
         return (
-
             <>
             <ListItem>
               <Left>
