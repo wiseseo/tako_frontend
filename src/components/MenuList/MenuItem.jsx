@@ -1,9 +1,9 @@
 import React  from 'react';
 import {Card, CardItem, Body, Text} from 'native-base';
-import DeleteButton from './Button/DeleteButton';
-import ModifyButton from './Button/ModifyButton';
+import DeleteButton from '../Button/DeleteButton';
+import ModifyButton from '../Button/ModifyButton';
 
-export default function MenuItem({menu, price, photo, index, navigation, isStoreScreen, isRegMenu}) {
+export default function MenuItem({menu, price, photo, index, isRegMenu}) {
     return (
         <Card>
             <CardItem header bordered>
@@ -24,7 +24,7 @@ export default function MenuItem({menu, price, photo, index, navigation, isStore
                 </Body>
             </CardItem>
             {!isRegMenu && <DeleteButton/>}
-            {!isRegMenu && <ModifyButton navigation={navigation} isStoreScreen={isStoreScreen}/>}
+            {!isRegMenu && <ModifyButton screenName="ModifyMenuFormScreen"/>}
         </Card>
     );
 }

@@ -1,18 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import UserInfo from '../components/UserInfo';
+import { StyleSheet} from 'react-native';
+import { Container, Content, Text, Button } from 'native-base';
+import UserInfo from '../components/UserInfo/index';
 
 export default function ModifySettingScreen({route, navigation}) {
   const {newSetting} = route.params;
   return (
-    <View>
-      <Text>ModifySettingScreen</Text>
-      <UserInfo newSetting={newSetting}/>
-      <Button
-        title="내정보 수정완료"
-        onPress={() => navigation.pop(1)}
-      />
-    </View>
+    <Container>
+      <Content>
+        <UserInfo newSetting={newSetting}/>
+        <Button
+          bordered full
+          onPress={() => navigation.pop(1)}
+        >
+          <Text>수정 완료</Text>
+        </Button>
+      </Content>
+    </Container>
   );
 }
 

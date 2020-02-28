@@ -1,8 +1,6 @@
 import React  from 'react';
 import {FlatList} from 'react-native';
 import StoreItem from './StoreItem';
-//import {Container, Content} from 'native-base';
-
 
 const dataArray = [
     { title: "First Element", content: "Lorem ipsum dolor sit amet", index:0 },
@@ -13,20 +11,19 @@ const dataArray = [
     { title: "Third Element", content: "Lorem ipsum dolor sit amet", index:6 },
   ];
 
-export default function StoreList({isFavScreen, navigation, isStoreScreen}) {
+export default function StoreList({isFavScreen, navigation}) {
     return (
-
-                <FlatList
-                    data={dataArray}
-                    renderItem={({item})=><StoreItem 
-                    navigation={navigation} 
-                    title={item.title} 
-                    content={item.content} 
-                    key={item.index} 
-                    isFavScreen={isFavScreen} 
-                    isStoreScreen={isStoreScreen}
-                    />}
-                />
-
+        <FlatList
+            data={dataArray}
+            renderItem={
+                ({item})=>
+                <StoreItem 
+                navigation={navigation} 
+                title={item.title} 
+                content={item.content} 
+                key={item.index} 
+                isFavScreen={isFavScreen} 
+                />}
+        />
     );
 }

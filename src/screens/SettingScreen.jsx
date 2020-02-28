@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import UserInfo from '../components/UserInfo';
-import { List, ListItem, Left, Right, Icon } from 'native-base';
+import { StyleSheet, Button } from 'react-native';
+import UserInfo from '../components/UserInfo/index';
+import { Container, Content, List, ListItem, Left, Right, Icon, Text } from 'native-base';
 
 
 export default function SettingScreen({navigation}) {
@@ -24,28 +24,29 @@ export default function SettingScreen({navigation}) {
 
   const newSetting = false;
   return (
-    <View>
-      <Text>SettingScreen</Text>
-      <List>
-        <UserInfo newSetting={newSetting} />
-        <ListItem>
-          <Left>
-            <Text>내가 좋아하는 가게</Text>
-          </Left>
-          <Right>
-            <Icon name="arrow-forward" onPress={() => navigation.navigate('MyFavoriteStoreScreen')}/>
-          </Right>
-        </ListItem>
-        <ListItem>
-          <Left>
-            <Text>내 가게</Text>
-          </Left>
-          <Right>
-            <Icon name="arrow-forward" onPress={() => navigation.navigate('MyStoreScreen')}/>
-          </Right>
-        </ListItem>
-      </List>
-    </View>
+    <Container>
+      <Content>
+        <List>
+          <UserInfo newSetting={newSetting} />
+          <ListItem>
+            <Left>
+              <Text>내가 좋아하는 가게</Text>
+            </Left>
+            <Right>
+              <Icon name="arrow-forward" onPress={() => navigation.navigate('MyFavoriteStoreScreen')}/>
+            </Right>
+          </ListItem>
+          <ListItem>
+            <Left>
+              <Text>내 가게</Text>
+            </Left>
+            <Right>
+              <Icon name="arrow-forward" onPress={() => navigation.navigate('MyStoreScreen')}/>
+            </Right>
+          </ListItem>
+        </List>
+      </Content>
+    </Container>
   );
 }
 

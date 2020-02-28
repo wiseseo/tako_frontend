@@ -1,20 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { StackActions } from '@react-navigation/native';
-import {Form} from 'native-base';
-import MenuForm from '../components/MenuForm';
+import {Container, Content, Form} from 'native-base';
+import MenuForm from '../components/Form/MenuForm';
 import MenuFormButton from '../components/Button/BottomButton/MenuFormButton';
 
 
 export default function RegisterMenuFormScreen({navigation}) {
   return (
-    <View >
-      <Text>RegisterMenuFormScreen</Text>
-      <Form>
-        <MenuForm/>
-        <MenuFormButton navigation={navigation}/>
-      </Form>
-    </View>
+    <Container>
+      <Content>
+        <Form>
+          <MenuForm/>
+          <MenuFormButton navigation={navigation}/>
+        </Form>
+      </Content>
+    </Container>
   );
 }
 

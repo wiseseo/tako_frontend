@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Button} from 'react-native';
-import MenuList from '../components/MenuList';
+import MenuList from '../components/MenuList/index';
 import MenuButton from '../components/Button/BottomButton/MenuButton';
-import { Text } from 'native-base';
+import {Container, Content} from 'native-base';
 
 
 export default function RegisterMenuScreen({navigation}) {
@@ -17,11 +17,12 @@ export default function RegisterMenuScreen({navigation}) {
   const isRegMenu = true;
   const isRegister = true;
   return (
-    <View>
-      <Text>RegisterMenuScreen</Text>
-      <MenuList isRegMenu={isRegMenu}/>
-      <MenuButton isRegister={isRegister} navigation={navigation}/>
-    </View>
+    <Container>
+      <Content>
+        <MenuList isRegMenu={isRegMenu}/>
+        <MenuButton isRegister={isRegister} navigation={navigation}/>
+      </Content>
+    </Container>
   );
 }
 

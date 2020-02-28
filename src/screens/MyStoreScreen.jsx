@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
-import StoreList from '../components/StoreList';
+import StoreList from '../components/StoreList/index';
 import { Container, Content } from 'native-base';
 
 export default function MyStoreScreen({navigation}) {
@@ -8,17 +8,15 @@ export default function MyStoreScreen({navigation}) {
     headerRight: () => (
       <Button
         onPress={() => navigation.navigate('RegisterNavigator',
-        {screen : 'RegisterStoreScreen',
-        params : {isRegister : true}})} 
+        {screen : 'RegisterStoreScreen',})} 
         title="가게등록"
       />
     ),
   });
-  const isStoreScreen = true;
   return (
     <Container>
       <Content>
-        <StoreList isFavScreen={false} navigation={navigation} isStoreScreen={isStoreScreen}/>
+        <StoreList isFavScreen={false} navigation={navigation}/>
       </Content>
     </Container>
 

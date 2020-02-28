@@ -5,7 +5,7 @@ export default function LoginForm() {
     return (
                 <>
                 <Item floatingLabel>
-                    <Label>Username</Label>
+                    <Label>ID</Label>
                     <Input />
                 </Item>
                 <Item floatingLabel>

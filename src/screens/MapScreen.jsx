@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import MapDetail from '../components/MapDetail';
-import SearchBar from '../components/SearchBar';
+import MapDetail from '../components/Map/MapDetail';
+import SearchBar from '../components/Search/SearchBar';
 export default function MapScreen({navigation}) {
   navigation.setOptions({
     headerRight: () => (
@@ -18,7 +18,6 @@ export default function MapScreen({navigation}) {
     <SearchBar/>
       <View>
         <Text onPress={()=>setMapDetail(false)}>MapScreen</Text>
-
       </View>
       <Button title="가게닷!" onPress={()=>setMapDetail(true)}>
         </Button>

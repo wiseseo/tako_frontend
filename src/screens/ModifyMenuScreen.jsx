@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import MenuList from '../components/MenuList';
+import { StyleSheet } from 'react-native';
+import {container, Content, Container} from 'native-base';
+import MenuList from '../components/MenuList/index';
 import MenuButton from '../components/Button/BottomButton/MenuButton';
 
 export default function ModifyMenuScreen({navigation}) {
-  const isStoreScreen = false;
   const isRegister = false;
+  const isRegMenu = false;
   return (
-    <View>
-      <Text>ModifyMenuScreen</Text>
-      <MenuList navigation={navigation} isStoreScreen={isStoreScreen}/>
-      <MenuButton isRegister={isRegister} navigation={navigation}/>
-    </View>
+    <Container>
+      <Content>
+        <MenuList isRegMenu={isRegMenu}/>
+        <MenuButton isRegister={isRegister} navigation={navigation}/>
+      </Content>
+    </Container>
   );
 }
 
