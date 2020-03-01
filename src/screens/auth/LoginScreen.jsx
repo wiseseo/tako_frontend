@@ -18,9 +18,9 @@ export default function LoginScreen() {
         <Content>
           <Form>
             <LoginForm/>
-            <BottomButton screenName="SignupScreen" onPress={moveSignup}/>
             <BottomButton screenName="LoginScreen" onPress={login}/>
           </Form>
+          <BottomButton screenName="SignupScreen" onPress={moveSignup}/>
         </Content>
       </Container>
     );

@@ -1,21 +1,28 @@
 import React from 'react';
 import BackButton from '../components/Common/BackButton';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet } from 'react-native';
+import {Container, Content} from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+import StoreInfo from '../components/StoreInfo/index';
 
 
-export default function StoreInfoScreen({navigation}) {
+export default function StoreInfoScreen() {
+  const navigation = useNavigation();
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     )
   });
   return (
-    <View style={styles.container}>
-      <Text>StoreInfoScreen</Text>
-    </View>
+    <Container>
+      <Content>
+        <StoreInfo/>
+      </Content>
+    </Container>
   );
 }
 
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,3 +31,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+*/
