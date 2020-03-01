@@ -12,10 +12,6 @@ export default function SettingScreen({navigation}) {
       <BackButton/>
     ),
     headerRight: () => (
-      /*<Button
-        onPress={() => navigation.navigate('ModifySettingScreen')}
-        title="정보수정"
-      />*/
       <HeaderButton screenName="ModifySettingScreen"/>
     ),
   });

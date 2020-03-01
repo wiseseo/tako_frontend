@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native';
 import { Container, Content, Form } from 'native-base';
 import StoreForm from '../components/Form/StoreForm';
-import StoreButton from '../components/Button/BottomButton/StoreButton';
+import RegisterButton from '../components/Button/BottomButton/RegisterButton';
 
 
 export default function RegisterStoreScreen({navigation}) {
@@ -15,7 +15,7 @@ export default function RegisterStoreScreen({navigation}) {
       <Content>
         <Form>
           <StoreForm/>
-          <StoreButton isRegister={isRegister} navigation={navigation}/>
+          <RegisterButton screenName="RegisterMenuScreen"/>
         </Form>
       </Content>
     </Container>

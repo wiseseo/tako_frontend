@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import {Container, Content, Form} from 'native-base';
 import MenuForm from '../components/Form/MenuForm';
-import MenuFormButton from '../components/Button/BottomButton/MenuFormButton';
+import ModifyButton from '../components/Button/BottomButton/ModifyButton';
 
 export default function RegisterMenuFormScreen({navigation}) {
   navigation.setOptions({
@@ -13,7 +13,7 @@ export default function RegisterMenuFormScreen({navigation}) {
       <Content>
         <Form>
           <MenuForm/>
-          <MenuFormButton navigation={navigation}/>
+          <ModifyButton screenName="RegisterMenuFormScreen"/>
         </Form>
       </Content>
     </Container>

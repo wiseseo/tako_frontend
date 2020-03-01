@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import MenuForm from '../components/Form/MenuForm';
-import MenuFormButton from '../components/Button/BottomButton/MenuFormButton';
+import ModifyButton from '../components/Button/BottomButton/ModifyButton';
 import { Container, Content, Form } from 'native-base';
 import BackButton from '../components/Common/BackButton';
 
@@ -16,7 +16,7 @@ export default function ModifyMenuFormScreen({navigation}) {
       <Content>
         <Form>
           <MenuForm/>
-          <MenuFormButton navigation={navigation}/>
+          <ModifyButton screenName="ModifyMenuFormScreen"/>
         </Form>
       </Content>
     </Container>

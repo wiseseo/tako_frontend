@@ -11,11 +11,6 @@ export default function MyStoreScreen({navigation}) {
       <BackButton/>
     ),
     headerRight: () => (
-      /*<Button
-        onPress={() => navigation.navigate('RegisterNavigator',
-        {screen : 'RegisterStoreScreen'})} 
-        title="가게등록"
-      />*/
       <HeaderButton navigater="RegisterNavigator" screenName="RegisterStoreScreen"/>
     ),
   });

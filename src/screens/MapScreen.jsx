@@ -7,10 +7,6 @@ import HeaderButton from '../components/Common/HeaderButton';
 export default function MapScreen({navigation}) {
   navigation.setOptions({
     headerRight: () => (
-      /*<Button
-        onPress={() => navigation.navigate('SettingNavigator', {screen:'SettingScreen'})}
-        title="설정"
-      />*/
       <HeaderButton screenName="SettingScreen" navigater="SettingNavigator"/>
     ),
   });

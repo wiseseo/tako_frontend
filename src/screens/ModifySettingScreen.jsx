@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet} from 'react-native';
-import { Container, Content, Text, Button } from 'native-base';
+import { Container, Content, Form } from 'native-base';
 import UserInfo from '../components/UserInfo/index';
 import BackButton from '../components/Common/BackButton';
+import ModifyButton from '../components/Button/BottomButton/ModifyButton';
 
 export default function ModifySettingScreen({ navigation}) {
   const newSetting = true;
@@ -14,13 +15,10 @@ export default function ModifySettingScreen({ navigation}) {
   return (
     <Container>
       <Content>
-        <UserInfo newSetting={newSetting}/>
-        <Button
-          bordered full
-          onPress={() => navigation.pop(1)}
-        >
-          <Text>수정 완료</Text>
-        </Button>
+        <Form>
+          <UserInfo newSetting={newSetting}/>
+          <ModifyButton screenName="ModifySettingScreen"/>
+        </Form>
       </Content>
     </Container>
   );
