@@ -4,8 +4,10 @@ import {Container, Content, Form} from 'native-base';
 import MenuForm from '../components/Form/MenuForm';
 import MenuFormButton from '../components/Button/BottomButton/MenuFormButton';
 
-
 export default function RegisterMenuFormScreen({navigation}) {
+  navigation.setOptions({
+    headerLeft: null,
+  });
   return (
     <Container>
       <Content>

@@ -2,13 +2,16 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import MapDetail from '../components/Map/MapDetail';
 import SearchBar from '../components/Search/SearchBar';
+import HeaderButton from '../components/Common/HeaderButton';
+
 export default function MapScreen({navigation}) {
   navigation.setOptions({
     headerRight: () => (
-      <Button
+      /*<Button
         onPress={() => navigation.navigate('SettingNavigator', {screen:'SettingScreen'})}
         title="설정"
-      />
+      />*/
+      <HeaderButton screenName="SettingScreen" navigater="SettingNavigator"/>
     ),
   });
 

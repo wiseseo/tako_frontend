@@ -3,10 +3,16 @@ import { StyleSheet } from 'react-native';
 import {container, Content, Container} from 'native-base';
 import MenuList from '../components/MenuList/index';
 import MenuButton from '../components/Button/BottomButton/MenuButton';
+import BackButton from '../components/Common/BackButton';
 
 export default function ModifyMenuScreen({navigation}) {
   const isRegister = false;
   const isRegMenu = false;
+  navigation.setOptions({
+    headerLeft: () => (
+      <BackButton/>
+    )
+  });
   return (
     <Container>
       <Content>

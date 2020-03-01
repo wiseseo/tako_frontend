@@ -11,9 +11,6 @@ export default function LoginScreen({navigation}) {
           <Form>
             <LoginForm/>
             <AuthButton screenName="SignupScreen"/>
-            <Button full onPress={() => navigation.navigate('SignupScreen')}>
-              <Text>Login</Text>
-            </Button>
           </Form>
         </Content>
       </Container>

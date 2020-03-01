@@ -4,8 +4,12 @@ import { Container, Content, Form } from 'native-base';
 import StoreForm from '../components/Form/StoreForm';
 import StoreButton from '../components/Button/BottomButton/StoreButton';
 
+
 export default function RegisterStoreScreen({navigation}) {
   const isRegister  = true;
+  navigation.setOptions({
+    headerLeft: null,
+  });
   return (
     <Container>
       <Content>

@@ -2,16 +2,18 @@ import React from 'react';
 import { StyleSheet, View, Button} from 'react-native';
 import MenuList from '../components/MenuList/index';
 import MenuButton from '../components/Button/BottomButton/MenuButton';
+import HeaderButton from '../components/Common/HeaderButton';
 import {Container, Content} from 'native-base';
-
 
 export default function RegisterMenuScreen({navigation}) {
   navigation.setOptions({
+    headerLeft: null,
     headerRight: () => (
-      <Button
+      /*<Button
         onPress={() => navigation.navigate('RegisterMenuFormScreen')}
         title="메뉴 등록"
-      />
+      />*/
+      <HeaderButton screenName="RegisterMenuFormScreen"/>
     ),
   });
   const isRegMenu = true;

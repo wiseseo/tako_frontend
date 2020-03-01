@@ -1,24 +1,22 @@
 import React from 'react';
 import { StyleSheet, Button } from 'react-native';
 import UserInfo from '../components/UserInfo/index';
+import BackButton from '../components/Common/BackButton';
+import HeaderButton from '../components/Common/HeaderButton';
 import { Container, Content, List, ListItem, Left, Right, Icon, Text } from 'native-base';
 
 
 export default function SettingScreen({navigation}) {
   navigation.setOptions({
     headerLeft: () => (
-      <Button
-        onPress={() => navigation.goBack()}
-        title="<-"
-      />
+      <BackButton/>
     ),
     headerRight: () => (
-      <Button
-        onPress={() => navigation.navigate('ModifySettingScreen',{
-          newSetting: true,
-        })}
+      /*<Button
+        onPress={() => navigation.navigate('ModifySettingScreen')}
         title="정보수정"
-      />
+      />*/
+      <HeaderButton screenName="ModifySettingScreen"/>
     ),
   });
 

@@ -2,17 +2,24 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import StoreList from '../components/StoreList/index';
 import { Container, Content } from 'native-base';
+import BackButton from '../components/Common/BackButton';
+import HeaderButton from '../components/Common/HeaderButton';
 
 export default function MyStoreScreen({navigation}) {
   navigation.setOptions({
+    headerLeft: () => (
+      <BackButton/>
+    ),
     headerRight: () => (
-      <Button
+      /*<Button
         onPress={() => navigation.navigate('RegisterNavigator',
-        {screen : 'RegisterStoreScreen',})} 
+        {screen : 'RegisterStoreScreen'})} 
         title="가게등록"
-      />
+      />*/
+      <HeaderButton navigater="RegisterNavigator" screenName="RegisterStoreScreen"/>
     ),
   });
+
   return (
     <Container>
       <Content>
