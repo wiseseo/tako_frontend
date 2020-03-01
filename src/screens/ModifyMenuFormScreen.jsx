@@ -1,22 +1,27 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import MenuForm from '../components/Form/MenuForm';
-import ModifyButton from '../components/Button/BottomButton/ModifyButton';
+import BottomButton from '../components/Button/BottomButton';
 import { Container, Content, Form } from 'native-base';
 import BackButton from '../components/Common/BackButton';
+import { useNavigation } from '@react-navigation/native';
 
-export default function ModifyMenuFormScreen({navigation}) {
+export default function ModifyMenuFormScreen() {
+  const navigation = useNavigation();
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     )
   });
+  const goBack = () => {
+    navigation.pop(1);
+  }
   return (
     <Container>
       <Content>
         <Form>
           <MenuForm/>
-          <ModifyButton screenName="ModifyMenuFormScreen"/>
+          <BottomButton screenName="ModifyMenuFormScreen" onPress={goBack}/>
         </Form>
       </Content>
     </Container>

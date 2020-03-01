@@ -1,18 +1,22 @@
 import React from 'react';
 import { StyleSheet, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import UserInfo from '../components/UserInfo/index';
 import BackButton from '../components/Common/BackButton';
-import HeaderButton from '../components/Common/HeaderButton';
+import HeaderRightButton from '../components/Common/HeaderRightButton';
+import MoveButton from '../components/Common/MoveButton';
 import { Container, Content, List, ListItem, Left, Right, Icon, Text } from 'native-base';
 
-
-export default function SettingScreen({navigation}) {
+export default function SettingScreen() {
+  const navigation = useNavigation();
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     ),
     headerRight: () => (
-      <HeaderButton screenName="ModifySettingScreen"/>
+      <HeaderRightButton 
+      onPress={()=>navigation.navigate('ModifySettingScreen')}
+      screenName="ModifySettingScreen"/>
     ),
   });
 
@@ -27,7 +31,7 @@ export default function SettingScreen({navigation}) {
               <Text>내가 좋아하는 가게</Text>
             </Left>
             <Right>
-              <Icon name="arrow-forward" onPress={() => navigation.navigate('MyFavoriteStoreScreen')}/>
+              <MoveButton onPress={() => navigation.navigate('MyFavoriteStoreScreen')}/>
             </Right>
           </ListItem>
           <ListItem>
@@ -35,7 +39,7 @@ export default function SettingScreen({navigation}) {
               <Text>내 가게</Text>
             </Left>
             <Right>
-              <Icon name="arrow-forward" onPress={() => navigation.navigate('MyStoreScreen')}/>
+              <MoveButton onPress={() => navigation.navigate('MyStoreScreen')}/>
             </Right>
           </ListItem>
         </List>

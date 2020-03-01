@@ -2,20 +2,26 @@ import React from 'react';
 import { Button } from 'react-native';
 import { Container, Content, Form } from 'native-base';
 import StoreForm from '../components/Form/StoreForm';
-import RegisterButton from '../components/Button/BottomButton/RegisterButton';
+import BottomButton from '../components/Button/BottomButton';
+import { useNavigation } from '@react-navigation/native';
 
+export default function RegisterStoreScreen() {
+  const navigation = useNavigation();
 
-export default function RegisterStoreScreen({navigation}) {
-  const isRegister  = true;
   navigation.setOptions({
     headerLeft: null,
   });
+
+  const moveRegistMenu = () => {
+    navigation.navigate('RegisterMenuScreen');
+  }
+
   return (
     <Container>
       <Content>
         <Form>
           <StoreForm/>
-          <RegisterButton screenName="RegisterMenuScreen"/>
+          <BottomButton screenName="RegisterMenuScreen" onPress={moveRegistMenu}/>
         </Form>
       </Content>
     </Container>

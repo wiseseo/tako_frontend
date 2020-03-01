@@ -1,16 +1,25 @@
 import React  from 'react';
 import LoginForm from '../../components/Auth/LoginForm';
-import AuthButton from '../../components/Button/BottomButton/AuthButton';
+import BottomButton from '../../components/Button/BottomButton';
 import { StyleSheet  } from 'react-native';
 import { Container, Content, Form } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen() {
+  const navigation = useNavigation();
+  const moveSignup = () => {
+    navigation.navigate('SignupScreen');
+  }
+  const login = () => {
+    alert('login success!');
+  }
     return (
       <Container>
         <Content>
           <Form>
             <LoginForm/>
-            <AuthButton screenName="SignupScreen"/>
+            <BottomButton screenName="SignupScreen" onPress={moveSignup}/>
+            <BottomButton screenName="LoginScreen" onPress={login}/>
           </Form>
         </Content>
       </Container>

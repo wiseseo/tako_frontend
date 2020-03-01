@@ -3,21 +3,26 @@ import { StyleSheet} from 'react-native';
 import { Container, Content, Form } from 'native-base';
 import UserInfo from '../components/UserInfo/index';
 import BackButton from '../components/Common/BackButton';
-import ModifyButton from '../components/Button/BottomButton/ModifyButton';
+import BottomButton from '../components/Button/BottomButton';
+import { useNavigation } from '@react-navigation/native';
 
-export default function ModifySettingScreen({ navigation}) {
+export default function ModifySettingScreen() {
+  const navigation = useNavigation();
   const newSetting = true;
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     )
   });
+  const goBack = () => {
+    navigation.pop(1);
+  }
   return (
     <Container>
       <Content>
         <Form>
           <UserInfo newSetting={newSetting}/>
-          <ModifyButton screenName="ModifySettingScreen"/>
+          <BottomButton screenName="ModifySettingScreen" onPress={goBack}/>
         </Form>
       </Content>
     </Container>

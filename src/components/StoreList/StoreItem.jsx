@@ -1,10 +1,17 @@
 import React  from 'react';
-import DeleteButton from '../Button/DeleteButton';
-import ModifyButton from '../Button/ModifyButton';
-import {Card, CardItem, Body, Text, Button} from 'native-base';
+import BottomButton from '../Button/BottomButton';
+import {Card, CardItem, Body, Text } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 
 
-export default function StoreItem({navigation ,title, content, isFavScreen}) {
+export default function StoreItem({title, content, isFavScreen}) {
+    const navigation = useNavigation();
+    const moveModifyStore = () => {
+        navigation.navigate('ModifyStoreScreen');
+    }
+    const moveModifyMenu = () => {
+        navigation.navigate('ModifyMenuScreen');
+    }
     return (
         <Card>
             <CardItem header bordered>
@@ -15,9 +22,9 @@ export default function StoreItem({navigation ,title, content, isFavScreen}) {
                     <Text>{content}</Text>
                 </Body>
             </CardItem>
-            <DeleteButton/>
-            {!isFavScreen && <ModifyButton screenName="ModifyStoreScreen"/>}
-            {!isFavScreen && <ModifyButton screenName="ModifyMenuScreen"/>}
+            <BottomButton screenName="Delete" onPress={()=>{alert('Delete!')}}/>
+            {!isFavScreen && <BottomButton screenName="ModifyStoreList" onPress={moveModifyStore}/>}
+            {!isFavScreen && <BottomButton screenName="ModifyMenuList" onPress={moveModifyMenu}/>}
         </Card>
     );
 }

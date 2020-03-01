@@ -1,24 +1,27 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Button, Text, Footer, FooterTab } from 'native-base';
+import { Container, Content, Form } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 import StoreForm from '../components/Form/StoreForm';
-//import StoreButton from '../components/Button/BottomButton/StoreButton';
 import BackButton from '../components/Common/BackButton';
-import ModifyButton from '../components/Button/BottomButton/ModifyButton';
+import BottomButton from '../components/Button/BottomButton';
 
-export default function ModifyStoreScreen({navigation}) {
-  const isRegister = false;
+export default function ModifyStoreScreen() {
+  const navigation = useNavigation();
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     )
   });
+  const goBack = () => {
+    navigation.pop(1);
+  }
   return (
     <Container>
       <Content>
         <Form>
           <StoreForm/>
-          <ModifyButton screenName='ModifyStoreScreen'/>
+          <BottomButton screenName='ModifyStoreScreen' onPress={goBack}/>
         </Form>
       </Content>
     </Container>

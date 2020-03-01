@@ -1,6 +1,6 @@
 import React from 'react';
 import BackButton from '../components/Common/BackButton';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 
 
 export default function StoreInfoScreen({navigation}) {
@@ -12,7 +12,6 @@ export default function StoreInfoScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Text>StoreInfoScreen</Text>
-      <Button onPress={() => navigation.goBack()} title="Dismiss" /> 
     </View>
   );
 }

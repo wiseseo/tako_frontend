@@ -11,14 +11,13 @@ const dataArray = [
     { title: "Third Element", content: "Lorem ipsum dolor sit amet", index:6 },
   ];
 
-export default function StoreList({isFavScreen, navigation}) {
+export default function StoreList({isFavScreen}) {
     return (
         <FlatList
             data={dataArray}
             renderItem={
                 ({item})=>
                 <StoreItem 
-                navigation={navigation} 
                 title={item.title} 
                 content={item.content} 
                 key={item.index} 

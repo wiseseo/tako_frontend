@@ -2,23 +2,27 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import StoreList from '../components/StoreList/index';
 import { Container, Content } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Common/BackButton';
-import HeaderButton from '../components/Common/HeaderButton';
+import HeaderRightButton from '../components/Common/HeaderRightButton';
 
-export default function MyStoreScreen({navigation}) {
+export default function MyStoreScreen() {
+  const navigation = useNavigation();
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     ),
     headerRight: () => (
-      <HeaderButton navigater="RegisterNavigator" screenName="RegisterStoreScreen"/>
+      <HeaderRightButton 
+      screenName="RegisterStoreScreen"
+      onPress={()=>navigation.navigate('RegisterNavigator',{screen : "RegisterStoreScreen"})}/>
     ),
   });
 
   return (
     <Container>
       <Content>
-        <StoreList isFavScreen={false} navigation={navigation}/>
+        <StoreList isFavScreen={false}/>
       </Content>
     </Container>
 

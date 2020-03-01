@@ -2,12 +2,17 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import MapDetail from '../components/Map/MapDetail';
 import SearchBar from '../components/Search/SearchBar';
-import HeaderButton from '../components/Common/HeaderButton';
+import { useNavigation } from '@react-navigation/native';
+import HeaderRightButton from '../components/Common/HeaderRightButton';
 
-export default function MapScreen({navigation}) {
+export default function MapScreen() {
+  const navigation = useNavigation();
   navigation.setOptions({
     headerRight: () => (
-      <HeaderButton screenName="SettingScreen" navigater="SettingNavigator"/>
+      <HeaderRightButton 
+      screenName="SettingScreen" 
+      onPress={()=>navigation.navigate("SettingNavigator",{screen :"SettingScreen" })}
+      />
     ),
   });
 
@@ -20,7 +25,7 @@ export default function MapScreen({navigation}) {
       </View>
       <Button title="가게닷!" onPress={()=>setMapDetail(true)}>
         </Button>
-      {showMapDetail && <MapDetail navigation={navigation}/>}
+      {showMapDetail && <MapDetail/>}
     </View>
   );
 }
