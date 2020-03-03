@@ -5,6 +5,7 @@ import { Container, Content } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Common/BackButton';
 import HeaderRightButton from '../components/Common/HeaderRightButton';
+import {StoreProvider} from '../store/store';
 
 export default function MyStoreScreen() {
   const navigation = useNavigation();
@@ -22,7 +23,9 @@ export default function MyStoreScreen() {
   return (
     <Container>
       <Content>
-        <StoreList isFavScreen={false}/>
+        <StoreProvider>
+          <StoreList isFavScreen={false}/>
+        </StoreProvider>
       </Content>
     </Container>
 

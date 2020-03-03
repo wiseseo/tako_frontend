@@ -1,8 +1,9 @@
-import React  from 'react';
+import React, {useContext}  from 'react';
 import {FlatList} from 'react-native';
 import StoreItem from './StoreItem';
+import {StoreContext} from '../../store/store';
 
-const dataArray = [
+/*const dataArray = [
     { title: "First Element", content: "Lorem ipsum dolor sit amet", index:0 },
     { title: "Second Element", content: "Lorem ipsum dolor sit amet", index:1 },
     { title: "Third Element", content: "Lorem ipsum dolor sit amet", index:3 },
@@ -10,11 +11,13 @@ const dataArray = [
     { title: "Third Element", content: "Lorem ipsum dolor sit amet", index:5 },
     { title: "Third Element", content: "Lorem ipsum dolor sit amet", index:6 },
   ];
+*/
 
 export default function StoreList({isFavScreen}) {
+    const { storeList } = useContext(StoreContext);
     return (
         <FlatList
-            data={dataArray}
+            data={storeList}
             renderItem={
                 ({item})=>
                 <StoreItem 

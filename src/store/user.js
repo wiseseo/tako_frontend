@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 const defaultUser = {
-    name : "",
-    id : "",
-    password : "",
+    name : "eunwoo",
+    password : "dmsdn",
     modifySetting : () => {}
 };
 
@@ -21,7 +20,6 @@ export const UserProvider = props => {
     <UserContext.Provider
       value={{
         name,
-        id,
         password,
         modifySetting
       }}

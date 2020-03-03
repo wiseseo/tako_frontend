@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet} from 'react-native';
 import { Container, Content, Form } from 'native-base';
 import UserInfo from '../components/UserInfo/index';
-import BackButton from '../components/Common/BackButton';
-import BottomButton from '../components/Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
+import BackButton from '../components/Common/BackButton';
 
 export default function ModifySettingScreen() {
   const navigation = useNavigation();
@@ -14,15 +13,12 @@ export default function ModifySettingScreen() {
       <BackButton/>
     )
   });
-  const goBack = () => {
-    navigation.pop(1);
-  }
+
   return (
     <Container>
       <Content>
         <Form>
           <UserInfo newSetting={newSetting}/>
-          <BottomButton screenName="ModifySettingScreen" onPress={goBack}/>
         </Form>
       </Content>
     </Container>

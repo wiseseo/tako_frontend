@@ -1,8 +1,9 @@
-import React  from 'react';
+import React , {useContext} from 'react';
 import { ListItem, Text, Left, Right} from 'native-base';
-
+import { UserContext } from '../../store/user';
 
 export default function List() {
+  const {name} = useContext(UserContext);
     return (
         <>
             <ListItem>
@@ -10,7 +11,7 @@ export default function List() {
                 <Text>name</Text>
               </Left>
               <Right>
-                <Text>서지혜</Text>
+                <Text>{name}</Text>
               </Right>
             </ListItem>
             <ListItem>
@@ -18,7 +19,7 @@ export default function List() {
                 <Text>id</Text>
               </Left>
               <Right>
-                <Text>mansesjh22</Text>
+                <Text>ggg</Text>
               </Right>
             </ListItem>
          </>
