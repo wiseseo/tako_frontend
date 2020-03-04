@@ -6,7 +6,6 @@ import BackButton from '../components/Common/BackButton';
 import HeaderRightButton from '../components/Common/HeaderRightButton';
 import MoveButton from '../components/Common/MoveButton';
 import { Container, Content, List, ListItem, Left, Right, Text } from 'native-base';
-//import {UserProvider} from '../store/user';
 
 export default function SettingScreen() {
   const navigation = useNavigation();

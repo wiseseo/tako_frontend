@@ -10,7 +10,13 @@ const defaultStore = {
     { title: "호두과자", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
     { title: "닭꼬치", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"}
     ],
-    menuList : [],
+    menuList : [
+      {menu: "붕어빵", price:1000, photo:"url"},
+      {menu: "문어빵", price:1000, photo:"url"},
+      {menu: "씨앗호떡", price:1000, photo:"url"},
+      {menu: "생크림와플", price:1000, photo:"url"},
+      {menu: "슈크림붕어빵", price:1000, photo:"url"}
+    ],
     addStoreInList : () => {},
     deleteStoreInList : () => {},
     modifyStore : () => {},
@@ -52,8 +58,9 @@ export const StoreProvider = props => {
   };
 
   const modifyMenu = (menu, index) => {
-    menuList[index] = menu;
-    setMenuList(menuList);
+    let list = [...menuList];
+    list.splice(parseInt(index),1,menu)
+    setMenuList(list);
   };
   return (
     <StoreContext.Provider

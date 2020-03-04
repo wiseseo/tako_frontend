@@ -3,10 +3,12 @@ import {Card, CardItem, Body, Text} from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 
-export default function MenuItem({menu, price, photo, index, isRegMenu}) {
+export default function MenuItem({menu, price, photo, index, isRegMenu, onDelete}) {
     const navigation = useNavigation();
     const moveModifyMenuForm = () => {
-        navigation.navigate('ModifyMenuFormScreen');
+        navigation.navigate('ModifyMenuFormScreen',{
+            index:index
+        });
     }
     return (
         <Card>
@@ -27,7 +29,7 @@ export default function MenuItem({menu, price, photo, index, isRegMenu}) {
                     </Text>
                 </Body>
             </CardItem>
-            {!isRegMenu && <BottomButton screenName="Delete" onPress={()=>{alert('Delete!')}}/>}
+            {!isRegMenu && <BottomButton screenName="Delete" onPress={onDelete}/>}
             {!isRegMenu && <BottomButton screenName="ModifyMenuFormList" onPress={moveModifyMenuForm}/>}
         </Card>
     );

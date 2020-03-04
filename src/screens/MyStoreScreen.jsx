@@ -22,7 +22,7 @@ export default function MyStoreScreen() {
   return (
     <Container>
       <Content>
-          <StoreList isFavScreen={false}/>
+        <StoreList isFavScreen={false}/>
       </Content>
     </Container>
 

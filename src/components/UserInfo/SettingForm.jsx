@@ -8,9 +8,7 @@ export default function SettingForm() {
     const {modifySetting} = useContext(UserContext);
     const [name, setName] = useState("");
     const navigation = useNavigation();
-    /*const goBack = () => {
-        navigation.pop(1);
-      }*/
+
     return (
 
             <>

@@ -1,5 +1,5 @@
 import React, { useState, useContext }  from 'react';
-import { Item, Input, Label, Picker, Textarea} from 'native-base';
+import { Form ,Item, Input, Label, Picker, Textarea} from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 import { StoreContext } from '../../store/store';
@@ -14,7 +14,7 @@ export default function StoreForm({screenName, isRegister, index}) {
     const [description, setDescription] = useState('');
 
     return (
-                <>
+            <Form>
                 <Item floatingLabel>
                     <Label>이름</Label>
                     <Input 
@@ -91,6 +91,6 @@ export default function StoreForm({screenName, isRegister, index}) {
 
                     }
                 />
-                </>
+            </Form>
     );
 }

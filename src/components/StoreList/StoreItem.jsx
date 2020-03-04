@@ -2,11 +2,8 @@ import React, { useContext }  from 'react';
 import BottomButton from '../Button/BottomButton';
 import {Card, CardItem, Body, Text } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
-//import { StoreContext } from '../../store/store';
 
 export default function StoreItem({title, address, time, description, index, onDelete, isFavScreen}) {
-    //const {deleteStoreInList, storeList} = useContext(StoreContext);
-
     const navigation = useNavigation();
     const moveModifyStore = () => {
         navigation.navigate('ModifyStoreScreen',{

@@ -1,10 +1,7 @@
 import React from 'react';
-import { Button } from 'react-native';
-import { Container, Content, Form } from 'native-base';
+import { Container, Content } from 'native-base';
 import StoreForm from '../components/Form/StoreForm';
-import BottomButton from '../components/Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
-//import { storeList, addStoreInList } from '../store/store';
 
 export default function RegisterStoreScreen() {
   const navigation = useNavigation();
@@ -18,9 +15,7 @@ export default function RegisterStoreScreen() {
   return (
     <Container>
       <Content>
-        <Form>
-          <StoreForm screenName="RegisterMenuScreen" isRegister={isRegister}/>
-        </Form>
+        <StoreForm screenName="RegisterMenuScreen" isRegister={isRegister}/>
       </Content>
     </Container>
     

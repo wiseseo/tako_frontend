@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Container, Content, Form } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Container, Content} from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import StoreForm from '../components/Form/StoreForm';
 import BackButton from '../components/Common/BackButton';
@@ -19,9 +19,7 @@ export default function ModifyStoreScreen({route}) {
   return (
     <Container>
       <Content>
-        <Form>
-          <StoreForm screenName='ModifyStoreScreen' isRegister={isRegister} index={index}/>
-        </Form>
+        <StoreForm screenName='ModifyStoreScreen' isRegister={isRegister} index={index}/>
       </Content>
     </Container>
   );

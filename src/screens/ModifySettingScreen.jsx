@@ -4,7 +4,6 @@ import { Container, Content, Form } from 'native-base';
 import UserInfo from '../components/UserInfo/index';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Common/BackButton';
-//import { UserProvider } from '../store/user';
 
 export default function ModifySettingScreen() {
   const navigation = useNavigation();

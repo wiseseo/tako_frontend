@@ -1,13 +1,19 @@
-import React , {useState} from 'react';
-import {Item, Input, Label } from 'native-base';
+import React , {useState, useContext} from 'react';
+import {Form, Item, Input, Label } from 'native-base';
+import BottomButton from '../Button/BottomButton';
+import { useNavigation } from '@react-navigation/native';
+import { StoreContext } from '../../store/store';
 
-export default function MenuForm() {
+export default function MenuForm({screenName, isRegister, index}) {
+    const navigation = useNavigation();
+    const {modifyMenu, addMenuInList} = useContext(StoreContext);
+
     const [menu, setMenu] = useState("");
     const [price, setPrice] = useState("");
-    const [image, setImage] = useState("");
+    const [photo, setPhoto] = useState("");
 
     return (
-                <>
+            <Form>
                 <Item floatingLabel>
                     <Label>menu</Label>
                     <Input 
@@ -25,13 +31,33 @@ export default function MenuForm() {
                     onChangeText={value => setPrice(value)}/>
                 </Item>
                 <Item floatingLabel>
-                    <Label>image</Label>
+                    <Label>photo</Label>
                     <Input                     
-                    value={image}
+                    value={photo}
                     placeholder="메뉴이미지"
                     autoFocus={false}
-                    onChangeText={value => setImage(value)}/>
+                    onChangeText={value => setPhoto(value)}/>
                 </Item>
-                </>
+                <BottomButton 
+                screenName={screenName}
+                onPress={
+                    isRegister ? () => {
+                        addMenuInList({
+                            menu,
+                            price,
+                            photo
+                        });
+                        navigation.pop(1);
+                    } : ()=>{
+                        modifyMenu({
+                            menu,
+                            price,
+                            photo
+                        }, index);
+                        navigation.pop(1);
+                    }
+                }
+                />
+        </Form>
     );
 }
