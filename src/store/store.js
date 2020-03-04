@@ -2,10 +2,14 @@ import React, { useState } from "react";
 
 const defaultStore = {
     storeList : [    
-    { title: "First Element", content: "Lorem ipsum dolor sit amet", index:0 },
-    { title: "Second Element", content: "Lorem ipsum dolor sit amet", index:1 },
-    { title: "Third Element", content: "Lorem ipsum dolor sit amet", index:3 }
-],
+    { title: "붕어빵", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
+    { title: "타코야끼", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
+    { title: "호떡", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
+    { title: "떡볶이", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
+    { title: "와플", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
+    { title: "호두과자", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
+    { title: "닭꼬치", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"}
+    ],
     menuList : [],
     addStoreInList : () => {},
     deleteStoreInList : () => {},
@@ -32,8 +36,9 @@ export const StoreProvider = props => {
   };
 
   const modifyStore = (store, index) => {
-    storeList[index] = store;
-    setStoreList(storeList);
+    let list = [...storeList];
+    list.splice(parseInt(index),1, store);
+    setStoreList(list);
   };
 
   const addMenuInList = menu => {

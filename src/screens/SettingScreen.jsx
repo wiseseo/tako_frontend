@@ -6,7 +6,7 @@ import BackButton from '../components/Common/BackButton';
 import HeaderRightButton from '../components/Common/HeaderRightButton';
 import MoveButton from '../components/Common/MoveButton';
 import { Container, Content, List, ListItem, Left, Right, Text } from 'native-base';
-import {UserProvider} from '../store/user';
+//import {UserProvider} from '../store/user';
 
 export default function SettingScreen() {
   const navigation = useNavigation();
@@ -26,9 +26,7 @@ export default function SettingScreen() {
     <Container>
       <Content>
         <List>
-          <UserProvider>
-            <UserInfo newSetting={newSetting} />
-          </UserProvider>
+          <UserInfo newSetting={newSetting} />
           <ListItem>
             <Left>
               <Text>내가 좋아하는 가게</Text>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 //import { NavigationContainer } from '@react-navigation/native';
 //import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './src/navigation/AppNavigator';
-
+//import { UserProvider } from './src/store/user';
 //const Stack = createStackNavigator();
 
 export default function App() {

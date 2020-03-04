@@ -15,7 +15,8 @@ import ModifyStoreScreen from '../screens/ModifyStoreScreen';
 import ModifyMenuScreen from '../screens/ModifyMenuScreen';
 import ModifyMenuFormScreen from '../screens/ModifyMenuFormScreen';
 import StoreInfoScreen from '../screens/StoreInfoScreen';
-
+import { UserProvider } from '../store/user';
+import { StoreProvider } from '../store/store';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,8 @@ function RegisterNavigator() {
 
 function SettingNavigator() {
   return (
+    <UserProvider>
+
     <Stack.Navigator>
       <Stack.Screen
         name="SettingScreen"
@@ -71,19 +74,22 @@ function SettingNavigator() {
       />
       <Stack.Screen name="RegisterNavigator" component={RegisterNavigator} options={{ headerShown: false }}/>
     </Stack.Navigator>
+    </UserProvider>
   );
 }
 
 
 function MapNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="MapScreen"
-        component={MapScreen}
-      />
-      <Stack.Screen name="SettingNavigator" component={SettingNavigator} options={{ headerShown: false }}/>
-    </Stack.Navigator>
+    <StoreProvider>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="MapScreen"
+          component={MapScreen}
+        />
+          <Stack.Screen name="SettingNavigator" component={SettingNavigator} options={{ headerShown: false }}/>
+      </Stack.Navigator>
+    </StoreProvider>
   );
 }
 

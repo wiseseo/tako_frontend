@@ -4,24 +4,23 @@ import { Container, Content, Form } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import StoreForm from '../components/Form/StoreForm';
 import BackButton from '../components/Common/BackButton';
-import BottomButton from '../components/Button/BottomButton';
 
-export default function ModifyStoreScreen() {
+export default function ModifyStoreScreen({route}) {
   const navigation = useNavigation();
+  const isRegister = false;
+  const {index} = route.params;
+
   navigation.setOptions({
     headerLeft: () => (
       <BackButton/>
     )
   });
-  const goBack = () => {
-    navigation.pop(1);
-  }
+
   return (
     <Container>
       <Content>
         <Form>
-          <StoreForm/>
-          <BottomButton screenName='ModifyStoreScreen' onPress={goBack}/>
+          <StoreForm screenName='ModifyStoreScreen' isRegister={isRegister} index={index}/>
         </Form>
       </Content>
     </Container>

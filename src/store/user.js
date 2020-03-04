@@ -12,9 +12,9 @@ export const UserProvider = props => {
   const [name, setName] = useState(defaultUser.name);
   const [password, setPassword] = useState(defaultUser.password);
 
-  const modifySetting = (name, password) => {
+  const modifySetting = (name) => {
     setName(name);
-    setPassword(password);
+    //setPassword(password);
   };
   return (
     <UserContext.Provider

@@ -3,7 +3,7 @@ import {Item, Input, Label } from 'native-base';
 
 export default function MenuForm() {
     const [menu, setMenu] = useState("");
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
 
     return (
