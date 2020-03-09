@@ -1,8 +1,9 @@
 import React, { useState, useContext }  from 'react';
-import { Form ,Item, Input, Label, Picker, Textarea} from 'native-base';
+import { Form ,Item, Input, Label, Thumbnail, Button, Text, Picker } from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 import { StoreContext } from '../../store/store';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function StoreForm({screenName, isRegister, index}) {
     const navigation = useNavigation();
@@ -13,6 +14,36 @@ export default function StoreForm({screenName, isRegister, index}) {
     const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
 
+    let [selectedImage, setSelectedImage] = useState(null);
+
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+    
+        if (permissionResult.granted === false) {
+          alert('Permission to access camera roll is required!');
+          return;
+        }
+    
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    
+        if (pickerResult.cancelled === true) {
+          return;
+        }
+    
+        setSelectedImage({ localUri: pickerResult.uri });
+      };
+    /*
+    if (selectedImage !== null) {
+    return (
+        <View style={styles.container}>
+        <Image
+            source={{ uri: selectedImage.localUri }}
+            style={styles.thumbnail}
+        />
+        </View>
+    );
+    }
+    */
     return (
             <Form>
                 <Item floatingLabel>
@@ -68,6 +99,14 @@ export default function StoreForm({screenName, isRegister, index}) {
                         autoFocus={false}
                         onChangeText={value => setDescription(value)}/>
                 </Item>
+                <Item>
+                    <Button bordered rouneded onPress={openImagePickerAsync}>
+                        <Text>썸네일 선택</Text>
+                    </Button>
+                </Item>
+               { selectedImage !== null &&
+                    <Thumbnail square source={{ uri: selectedImage.localUri }}/>
+                }
                 <BottomButton 
                     screenName={screenName} 
                     onPress={
