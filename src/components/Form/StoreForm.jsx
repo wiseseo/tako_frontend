@@ -1,13 +1,17 @@
 import React, { useState, useContext }  from 'react';
-import { Form ,Item, Input, Label, Thumbnail, Button, Text, Picker } from 'native-base';
+//import { Modal, Alert } from 'react-native';
+import { Modal, TouchableHighlight,View, Alert } from 'react-native';
+import { Form ,Item, Input, Label, Thumbnail, Button,  ListItem, Text, Radio, Right, Left, Picker } from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 import { StoreContext } from '../../store/store';
 import * as ImagePicker from 'expo-image-picker';
+//import MenuPicker from './MenuPicker';
 
 export default function StoreForm({screenName, isRegister, index}) {
     const navigation = useNavigation();
 
+    const [modalVisible, setModalVisible] = useState(false);
     const { addStoreInList, modifyStore } = useContext(StoreContext);
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
@@ -107,6 +111,32 @@ export default function StoreForm({screenName, isRegister, index}) {
                { selectedImage !== null &&
                     <Thumbnail square source={{ uri: selectedImage.localUri }}/>
                 }
+                <Modal         
+                    animationType="fade"
+                    transparent={false}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert('Modal has been closed.');
+                    }}>
+                    <View style={{ marginTop: 22 }}>
+                    <View>
+                        <Text>Hello World!</Text>
+
+                        <TouchableHighlight
+                        onPress={() => {
+                            setModalVisible(!modalVisible);
+                        }}>
+                        <Text>Hide Modal</Text>
+                        </TouchableHighlight>
+                    </View>
+                    </View>
+                </Modal>
+                <Button bordered rouneded onPress={() => {
+                    setModalVisible(true);
+                }}>
+                    <Text>모달</Text>
+                </Button>
+                { /*modalVisible && <MenuPicker modalVisible={modalVisible}/>*/}
                 <BottomButton 
                     screenName={screenName} 
                     onPress={
