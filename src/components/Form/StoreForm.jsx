@@ -6,7 +6,7 @@ import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 import { StoreContext } from '../../store/store';
 import * as ImagePicker from 'expo-image-picker';
-//import MenuPicker from './MenuPicker';
+import MenuPicker from './MenuPicker';
 
 export default function StoreForm({screenName, isRegister, index}) {
     const navigation = useNavigation();
@@ -112,14 +112,15 @@ export default function StoreForm({screenName, isRegister, index}) {
                     <Thumbnail square source={{ uri: selectedImage.localUri }}/>
                 }
                 <Modal         
-                    animationType="fade"
+                    animationType="slide"
                     transparent={false}
                     visible={modalVisible}
                     onRequestClose={() => {
                     Alert.alert('Modal has been closed.');
-                    }}>
+                    }}
+                    presentationStyle="formSheet">
+                    {/*<View>
                     <View style={{ marginTop: 22 }}>
-                    <View>
                         <Text>Hello World!</Text>
 
                         <TouchableHighlight
@@ -129,7 +130,8 @@ export default function StoreForm({screenName, isRegister, index}) {
                         <Text>Hide Modal</Text>
                         </TouchableHighlight>
                     </View>
-                    </View>
+                    </View>*/}
+                    <MenuPicker/>
                 </Modal>
                 <Button bordered rouneded onPress={() => {
                     setModalVisible(true);
