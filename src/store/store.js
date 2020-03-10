@@ -17,20 +17,29 @@ const defaultStore = {
       {menu: "생크림와플", price:1000, photo:"url"},
       {menu: "슈크림붕어빵", price:1000, photo:"url"}
     ],
+    typeList : [
+      { label: '타코야끼', value: 0 , selected: false },
+      { label: '붕어빵', value: 1 , selected: false},
+      { label: '호떡', value: 2 , selected: false},
+      { label: '옛날호떡', value: 3 , selected: false},
+      { label: '군고구마', value: 4 , selected: false}
+    ],
+    selectedTypes : ()=>{},
     addStoreInList : () => {},
     deleteStoreInList : () => {},
     modifyStore : () => {},
     addMenuInList : () => {},
     deleteMenuInList : () => {},
     modifyMenu : () => {}
-};
-
-export const StoreContext = React.createContext(defaultStore);
-
-export const StoreProvider = props => {
-  const [storeList, setStoreList] = useState(defaultStore.storeList);
-  const [menuList, setMenuList] = useState(defaultStore.menuList);
+  };
   
+  export const StoreContext = React.createContext(defaultStore);
+  
+  export const StoreProvider = props => {
+    const [storeList, setStoreList] = useState(defaultStore.storeList);
+    const [menuList, setMenuList] = useState(defaultStore.menuList);
+    const [typeList, setTypeList] = useState(defaultStore.typeList);
+
   const addStoreInList = store => {
     setStoreList(prev => [...prev, store]);
   };
@@ -59,9 +68,22 @@ export const StoreProvider = props => {
 
   const modifyMenu = (menu, index) => {
     let list = [...menuList];
-    list.splice(parseInt(index),1,menu)
+    list.splice(parseInt(index),1,menu);
     setMenuList(list);
   };
+  
+  
+  const selectedTypes = (type, index) => {
+    let list = [...typeList];
+    list.splice(parseInt(index),1,type);
+    setTypeList(list);
+  };
+  // const selectedTypes = (type, index) => {
+  //   let list = [...typeList];
+  //   list.splice(parseInt(index),1, type);
+  //   setTypeList(list);
+  // };
+
   return (
     <StoreContext.Provider
       value={{
@@ -72,7 +94,9 @@ export const StoreProvider = props => {
         modifyStore,
         addMenuInList,
         deleteMenuInList,
-        modifyMenu
+        modifyMenu,
+        typeList,
+        selectedTypes
       }}
     >
       {props.children}

@@ -1,18 +1,21 @@
 import React, { useState, useContext }  from 'react';
 //import { Modal, Alert } from 'react-native';
-import { Modal, TouchableHighlight,View, Alert } from 'react-native';
-import { Form ,Item, Input, Label, Thumbnail, Button,  ListItem, Text, Radio, Right, Left, Picker } from 'native-base';
+import { Modal, FlatList } from 'react-native';
+import { Content, Form ,Item, Input, Label, Thumbnail, Button, Text} from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
+import PickerItem from './PickerItem';
 import { StoreContext } from '../../store/store';
+
 import * as ImagePicker from 'expo-image-picker';
-import MenuPicker from './MenuPicker';
 
 export default function StoreForm({screenName, isRegister, index}) {
     const navigation = useNavigation();
 
     const [modalVisible, setModalVisible] = useState(false);
-    const { addStoreInList, modifyStore } = useContext(StoreContext);
+    const [selectedMenu, setSelectedMenu] = useState(false);
+
+    const { addStoreInList, modifyStore, typeList } = useContext(StoreContext);
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
     const [time, setTime] = useState('');
@@ -36,18 +39,7 @@ export default function StoreForm({screenName, isRegister, index}) {
     
         setSelectedImage({ localUri: pickerResult.uri });
       };
-    /*
-    if (selectedImage !== null) {
-    return (
-        <View style={styles.container}>
-        <Image
-            source={{ uri: selectedImage.localUri }}
-            style={styles.thumbnail}
-        />
-        </View>
-    );
-    }
-    */
+ 
     return (
             <Form>
                 <Item floatingLabel>
@@ -58,21 +50,6 @@ export default function StoreForm({screenName, isRegister, index}) {
                         autoFocus={false}
                         onChangeText={value => setTitle(value)}/>
                 </Item>
-                {/*<Item picker>
-                    <Picker
-                        mode="dropdown"
-                        style={{ width: undefined }}
-                        placeholder="Select your SIM"
-                        placeholderStyle={{ color: "#bfc6ea" }}
-                        placeholderIconColor="#007aff"
-                    >
-                        <Picker.Item label="Wallet" value="key0" />
-                        <Picker.Item label="ATM Card" value="key1" />
-                        <Picker.Item label="Debit Card" value="key2" />
-                        <Picker.Item label="Credit Card" value="key3" />
-                        <Picker.Item label="Net Banking" value="key4" />
-                    </Picker>
-                </Item>*/}
                 <Item floatingLabel>
                     <Label>주소</Label>
                     <Input 
@@ -111,34 +88,56 @@ export default function StoreForm({screenName, isRegister, index}) {
                { selectedImage !== null &&
                     <Thumbnail square source={{ uri: selectedImage.localUri }}/>
                 }
-                <Modal         
-                    animationType="slide"
-                    transparent={false}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    }}
-                    presentationStyle="formSheet">
-                    {/*<View>
-                    <View style={{ marginTop: 22 }}>
-                        <Text>Hello World!</Text>
-
-                        <TouchableHighlight
+                <Item>
+                    <Modal         
+                        animationType="slide"
+                        transparent={false}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                        Alert.alert('Modal has been closed.');
+                        }}
+                        presentationStyle="formSheet">
+                        <Content style={{marginTop : 22}}>
+                            <FlatList
+                            data={typeList}
+                            keyExtractor={(item, index) => {
+                                return String(index);
+                            }}
+                            renderItem={
+                                ({item, index})=>
+                                (  <PickerItem 
+                                    label={item.label}
+                                    value={item.value}
+                                    selected={item.selected}
+                                    index={index}
+                                    />
+                                )
+                            }/>
+                            <Button 
+                                bordered 
+                                full
+                                onPress={()=>{
+                                    setModalVisible(false);
+                                    setSelectedMenu(true);
+                                    console.log(typeList);
+                                }}>
+                                <Text>save</Text>
+                            </Button>
+                        </Content>
+                    </Modal> 
+                    <Button 
+                        bordered 
+                        rouneded 
                         onPress={() => {
-                            setModalVisible(!modalVisible);
-                        }}>
-                        <Text>Hide Modal</Text>
-                        </TouchableHighlight>
-                    </View>
-                    </View>*/}
-                    <MenuPicker/>
-                </Modal>
-                <Button bordered rouneded onPress={() => {
-                    setModalVisible(true);
-                }}>
-                    <Text>모달</Text>
-                </Button>
-                { /*modalVisible && <MenuPicker modalVisible={modalVisible}/>*/}
+                        setModalVisible(true);
+                    }}>
+                        <Text>메뉴 종류</Text>
+                    </Button>
+                    { selectedMenu && typeList.map((item)=>{
+                        if(item.selected===true) return(<Text>{item.label}</Text>)
+                    })}
+                </Item>
+                
                 <BottomButton 
                     screenName={screenName} 
                     onPress={
@@ -159,7 +158,6 @@ export default function StoreForm({screenName, isRegister, index}) {
                             },index);
                             navigation.pop(1);
                         }
-
                     }
                 />
             </Form>
