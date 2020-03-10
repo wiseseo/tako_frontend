@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 const defaultStore = {
     storeList : [    
-    { title: "붕어빵", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
-    { title: "타코야끼", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
-    { title: "호떡", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
-    { title: "떡볶이", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
-    { title: "와플", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
-    { title: "호두과자", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"},
-    { title: "닭꼬치", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha"}
+    { title: "붕어빵", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[] },
+    { title: "타코야끼", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[]},
+    { title: "호떡", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[]},
+    { title: "떡볶이", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[]},
+    { title: "와플", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[]},
+    { title: "호두과자", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[]},
+    { title: "닭꼬치", address: "Lorem ipsum dolor sit amet", time : "17-22", description : "hahaha", thumbnail:"./png", type:[]}
     ],
     menuList : [
       {menu: "붕어빵", price:1000, photo:"url"},
@@ -78,11 +78,6 @@ const defaultStore = {
     list.splice(parseInt(index),1,type);
     setTypeList(list);
   };
-  // const selectedTypes = (type, index) => {
-  //   let list = [...typeList];
-  //   list.splice(parseInt(index),1, type);
-  //   setTypeList(list);
-  // };
 
   return (
     <StoreContext.Provider

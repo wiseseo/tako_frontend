@@ -3,7 +3,7 @@ import BottomButton from '../Button/BottomButton';
 import {Card, CardItem, Body, Text } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
-export default function StoreItem({title, address, time, description, index, onDelete, isFavScreen}) {
+export default function StoreItem({title, address, time, description, thumbnail, type, index, onDelete, isFavScreen}) {
     const navigation = useNavigation();
     const moveModifyStore = () => {
         navigation.navigate('ModifyStoreScreen',{
@@ -33,6 +33,12 @@ export default function StoreItem({title, address, time, description, index, onD
             </CardItem>
             <CardItem bordered>
                 <Text>{description}</Text>
+            </CardItem>
+            <CardItem bordered>
+                <Text>{thumbnail}</Text>
+            </CardItem>
+            <CardItem bordered>
+                {type.map(item => <Text>{item}</Text>)}
             </CardItem>
             <BottomButton 
             screenName="Delete" 

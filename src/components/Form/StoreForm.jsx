@@ -1,6 +1,5 @@
 import React, { useState, useContext }  from 'react';
-//import { Modal, Alert } from 'react-native';
-import { Modal, FlatList } from 'react-native';
+import { Modal, FlatList, Alert } from 'react-native';
 import { Content, Form ,Item, Input, Label, Thumbnail, Button, Text} from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -21,13 +20,13 @@ export default function StoreForm({screenName, isRegister, index}) {
     const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
 
-    let [selectedImage, setSelectedImage] = useState(null);
+    let [selectedImage, setSelectedImage] = useState("");
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
     
         if (permissionResult.granted === false) {
-          alert('Permission to access camera roll is required!');
+          Alert.alert('Permission to access camera roll is required!');
           return;
         }
     
@@ -146,7 +145,11 @@ export default function StoreForm({screenName, isRegister, index}) {
                                 title,
                                 address,
                                 time,
-                                description
+                                description,
+                                thumbnail : selectedImage.localUri,
+                                type: typeList.map((item)=>{
+                                        if(item.selected===true) return(item.label);
+                                        })
                             });
                             navigation.navigate('RegisterMenuScreen');
                         } : () => {
@@ -154,7 +157,11 @@ export default function StoreForm({screenName, isRegister, index}) {
                                 title,
                                 address,
                                 time,
-                                description
+                                description,
+                                thumbnail : selectedImage.localUri,
+                                type: typeList.map((item)=>{
+                                        if(item.selected===true) return(item.label);
+                                        })
                             },index);
                             navigation.pop(1);
                         }

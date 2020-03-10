@@ -1,4 +1,5 @@
 import React , {useState, useContext} from 'react';
+import { Alert } from 'react-native';
 import {Form, Item, Input, Label, Thumbnail, Button, Text } from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -11,15 +12,14 @@ export default function MenuForm({screenName, isRegister, index}) {
 
     const [menu, setMenu] = useState("");
     const [price, setPrice] = useState("");
-    const [photo, setPhoto] = useState("");
 
-    let [selectedImage, setSelectedImage] = useState(null);
+    let [selectedImage, setSelectedImage] = useState("");
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
     
         if (permissionResult.granted === false) {
-          alert('Permission to access camera roll is required!');
+          Alert.alert('Permission to access camera roll is required!');
           return;
         }
     
@@ -49,14 +49,6 @@ export default function MenuForm({screenName, isRegister, index}) {
                     autoFocus={false}
                     onChangeText={value => setPrice(value)}/>
                 </Item>
-                <Item floatingLabel>
-                    <Label>photo</Label>
-                    <Input                     
-                    value={photo}
-                    placeholder="메뉴이미지"
-                    autoFocus={false}
-                    onChangeText={value => setPhoto(value)}/>
-                </Item>
                 <Item>
                     <Button bordered rouneded onPress={openImagePickerAsync}>
                         <Text>썸네일 선택</Text>
@@ -72,14 +64,14 @@ export default function MenuForm({screenName, isRegister, index}) {
                         addMenuInList({
                             menu,
                             price,
-                            photo
+                            photo : selectedImage.localUri
                         });
                         navigation.pop(1);
                     } : ()=>{
                         modifyMenu({
                             menu,
                             price,
-                            photo
+                            photo : selectedImage.localUri
                         }, index);
                         navigation.pop(1);
                     }
