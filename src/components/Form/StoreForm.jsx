@@ -1,6 +1,6 @@
 import React, { useState, useContext }  from 'react';
 import { Modal, FlatList, Alert } from 'react-native';
-import { Content, Form ,Item, Input, Label, Thumbnail, Button, Text} from 'native-base';
+import { Content, Form ,Item, Input, Label, Thumbnail, Button, Text, Badge} from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
 import PickerItem from './PickerItem';
@@ -133,7 +133,7 @@ export default function StoreForm({screenName, isRegister, index}) {
                         <Text>메뉴 종류</Text>
                     </Button>
                     { selectedMenu && typeList.map((item)=>{
-                        if(item.selected===true) return(<Text>{item.label}</Text>)
+                        if(item.selected===true) return(<Badge primary><Text>{item.label}</Text></Badge>)
                     })}
                 </Item>
                 

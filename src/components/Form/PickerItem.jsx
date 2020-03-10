@@ -17,7 +17,6 @@ export default function PickerItem({label, value, selected, index}) {
                     value,
                     selected : !radioValue
                 }, index);
-                //console.log(typeList[parseInt(index)]);
                 }
             }>
             <Left>
