@@ -12,14 +12,18 @@ import AppNavigator from './src/navigation/AppNavigator';
 export default function App() {
   const [isReady, setIsReady] = useState(false);
 
-  useEffect(async ()=>{
+  async function getFont () {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       ...Ionicons.font,
     });
     setIsReady(true);
+  }
+  useEffect(()=>{
+    getFont();
   },[]);
+
   if(!isReady) return <AppLoading/>;
   return (
       <AppNavigator/>

@@ -1,4 +1,4 @@
-import React, { useState, useContext }  from 'react';
+import React, { useState, useContext, useEffect }  from 'react';
 import { Modal, FlatList, Alert } from 'react-native';
 import { Content, Form ,Item, Input, Label, Thumbnail, Button, Text, Badge} from 'native-base';
 import BottomButton from '../Button/BottomButton';
@@ -38,7 +38,10 @@ export default function StoreForm({screenName, isRegister, index}) {
     
         setSelectedImage({ localUri: pickerResult.uri });
       };
- 
+      useEffect(()=>{
+          console.log(typeList)
+      },[typeList]);
+
     return (
             <Form>
                 <Item floatingLabel>
@@ -93,7 +96,9 @@ export default function StoreForm({screenName, isRegister, index}) {
                         transparent={false}
                         visible={modalVisible}
                         onRequestClose={() => {
-                        Alert.alert('Modal has been closed.');
+                            Alert.alert('Modal has been closed.');
+                            setModalVisible(false);
+                            //console.log(typeList);
                         }}
                         presentationStyle="formSheet">
                         <Content style={{marginTop : 22}}>
@@ -109,6 +114,7 @@ export default function StoreForm({screenName, isRegister, index}) {
                                     value={item.value}
                                     selected={item.selected}
                                     index={index}
+                                    key={index}
                                     />
                                 )
                             }/>
@@ -132,9 +138,9 @@ export default function StoreForm({screenName, isRegister, index}) {
                     }}>
                         <Text>메뉴 종류</Text>
                     </Button>
-                    { selectedMenu && typeList.map((item)=>{
-                        if(item.selected===true) return(<Badge primary><Text>{item.label}</Text></Badge>)
-                    })}
+                    { selectedMenu && typeList.filter((item)=>{
+                        return item.selected===true
+                    }).map((item)=> <Badge primary><Text>{item.label}</Text></Badge>)}
                 </Item>
                 
                 <BottomButton 
@@ -147,9 +153,7 @@ export default function StoreForm({screenName, isRegister, index}) {
                                 time,
                                 description,
                                 thumbnail : selectedImage.localUri,
-                                type: typeList.map((item)=>{
-                                        if(item.selected===true) return(item.label);
-                                        })
+                                type: typeList.filter((item)=> item.selected === true).map(item=>item.label)
                             });
                             navigation.navigate('RegisterMenuScreen');
                         } : () => {
@@ -159,9 +163,7 @@ export default function StoreForm({screenName, isRegister, index}) {
                                 time,
                                 description,
                                 thumbnail : selectedImage.localUri,
-                                type: typeList.map((item)=>{
-                                        if(item.selected===true) return(item.label);
-                                        })
+                                type: typeList.filter((item)=> item.selected === true).map(item=>item.label)
                             },index);
                             navigation.pop(1);
                         }

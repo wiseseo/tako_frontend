@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const defaultStore = {
     storeList : [    
@@ -33,6 +33,7 @@ const defaultStore = {
     modifyMenu : () => {}
   };
   
+
   export const StoreContext = React.createContext(defaultStore);
   
   export const StoreProvider = props => {
@@ -42,6 +43,7 @@ const defaultStore = {
 
   const addStoreInList = store => {
     setStoreList(prev => [...prev, store]);
+    console.log(storeList);
   };
 
   const deleteStoreInList = index => {

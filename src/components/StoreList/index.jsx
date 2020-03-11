@@ -21,6 +21,7 @@ export default function StoreList({isFavScreen}) {
                 description={item.description}
                 thumbnail={item.thumbnail}
                 type={item.type}
+                key={index}
                 index={index}
                 onDelete={()=> deleteStoreInList(index)}
                 isFavScreen={isFavScreen} 

@@ -23,6 +23,7 @@ export default function MenuList({isRegMenu}) {
                 price={item.price} 
                 photo={item.photo} 
                 index={index}
+                key={index}
                 isRegMenu={isRegMenu}
                 onDelete={()=> deleteMenuInList(index)}
                 />)
