@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import MapView from 'react-native-maps';
+import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
 import MapDetail from '../components/Map/MapDetail';
 import SearchBar from '../components/Search/SearchBar';
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +20,12 @@ export default function MapScreen() {
   const [showMapDetail, setMapDetail] = useState(false);
   return (
     <View style={styles.container}>
-    <SearchBar/>
+      <View>
+        <MapView 
+        style={styles.mapStyle}
+        provider="google" />
+      </View>
+      <SearchBar/>
       <View>
         <Text onPress={()=>setMapDetail(false)}>MapScreen</Text>
       </View>
@@ -36,5 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height/2,
   },
 });

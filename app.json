@@ -16,6 +16,14 @@
       "package": "com.seojihye.takoyaki",
       "versionCode": 1
     },
+    "ios": {
+      "config": {
+        "googleMapsApiKey" : "AIzaSyC1x46d8ZmUXIXDh6tvln_gHBYcqqHT6xc"
+      },
+      "bundleIdentifier": "com.seojihye.takoyaki",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -26,9 +34,6 @@
     },
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
+    ]
   }
 }
