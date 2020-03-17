@@ -23,7 +23,18 @@ export default function MapScreen() {
       <View>
         <MapView 
         style={styles.mapStyle}
-        provider="google" />
+        provider="google"
+        initialRegion = {{
+          longitude: 126.95330254733562,
+          latitude: 37.51056599885274,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        showsUserLocation={true}
+        followsUserLocation={true}
+        onPress={(e)=>{
+          console.log(e.nativeEvent.coordinate);
+        }}/>
       </View>
       <SearchBar/>
       <View>
