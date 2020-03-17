@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect }  from 'react';
-import { Modal, FlatList, Alert } from 'react-native';
+import { StyleSheet, Modal, FlatList, Alert, View, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
 import { Content, Form ,Item, Input, Label, Thumbnail, Button, Text, Badge} from 'native-base';
 import BottomButton from '../Button/BottomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +14,9 @@ export default function StoreForm({screenName, isRegister, index}) {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState(false);
-
+    const [showMap, setShowMap] = useState(false);
+    const [pickedMap, setPickedMap] = useState({});
+    
     const { addStoreInList, modifyStore, typeList } = useContext(StoreContext);
     const [title, setTitle] = useState('');
     const [address, setAddress] = useState('');
@@ -37,12 +40,18 @@ export default function StoreForm({screenName, isRegister, index}) {
         }
     
         setSelectedImage({ localUri: pickerResult.uri });
-      };
-      useEffect(()=>{
-          console.log(typeList)
-      },[typeList]);
+    };
+    
+    useEffect(()=>{
+        console.log(typeList);
+        //console.log(pickedMap);
+    },[typeList]);
 
-    return (
+    useEffect(()=>{
+        console.log(pickedMap);
+    },[pickedMap]);
+
+    return (        
             <Form>
                 <Item floatingLabel>
                     <Label>이름</Label>
@@ -52,13 +61,58 @@ export default function StoreForm({screenName, isRegister, index}) {
                         autoFocus={false}
                         onChangeText={value => setTitle(value)}/>
                 </Item>
-                <Item floatingLabel>
-                    <Label>주소</Label>
+                <Item style={styles.rowContainer}>
+                    <Label floatingLabel>주소</Label>
                     <Input 
                         value={address}
                         placeholder="주소"
                         autoFocus={false}
                         onChangeText={value => setAddress(value)}/>
+                    <Modal         
+                        animationType="slide"
+                        transparent={false}
+                        visible={showMap}
+                        onRequestClose={() => {
+                            Alert.alert('Modal has been closed.');
+                            setShowMap(false);
+                            //console.log(typeList);
+                        }}
+                        presentationStyle="formSheet">
+                        <Content style={{marginTop : 22}}>
+                            <View>
+                                <MapView 
+                                    style={styles.mapStyle}
+                                    provider="google"
+                                    initialRegion = {{
+                                    longitude: 126.95330254733562,
+                                    latitude: 37.51056599885274,
+                                    latitudeDelta: 0.0922,
+                                    longitudeDelta: 0.0421,
+                                    }}
+                                    showsUserLocation={true}
+                                    followsUserLocation={true}
+                                    onPress={(e)=>{
+                                    console.log(e.nativeEvent.coordinate);
+                                    setPickedMap({latitude : e.nativeEvent.coordinate.latitude, longitude: e.nativeEvent.coordinate.longitude});
+                                    }}/>
+                            </View>
+                            <Button 
+                                bordered 
+                                full
+                                onPress={()=>{
+                                    setShowMap(false);
+                                }}>
+                                <Text>save</Text>
+                            </Button>
+                        </Content>
+                    </Modal>
+                    <Button
+                        bordered 
+                        rounded 
+                        onPress={() => {
+                        setShowMap(true)}}>
+                        <Text>지도에서 찾기</Text>
+                    </Button>        
                 </Item>
                 <Item floatingLabel>
                     <Label>시간</Label>
@@ -83,7 +137,8 @@ export default function StoreForm({screenName, isRegister, index}) {
                         onChangeText={value => setDescription(value)}/>
                 </Item>
                 <Item>
-                    <Button bordered rouneded onPress={openImagePickerAsync}>
+                    <Label>가게 사진 선택</Label>
+                    <Button bordered rounded onPress={openImagePickerAsync}>
                         <Text>썸네일 선택</Text>
                     </Button>
                 </Item>
@@ -91,6 +146,7 @@ export default function StoreForm({screenName, isRegister, index}) {
                     <Thumbnail square source={{ uri: selectedImage.localUri }}/>
                 }
                 <Item>
+                    <Label>메뉴 타입</Label>
                     <Modal         
                         animationType="slide"
                         transparent={false}
@@ -132,7 +188,7 @@ export default function StoreForm({screenName, isRegister, index}) {
                     </Modal> 
                     <Button 
                         bordered 
-                        rouneded 
+                        rounded 
                         onPress={() => {
                         setModalVisible(true);
                     }}>
@@ -172,3 +228,15 @@ export default function StoreForm({screenName, isRegister, index}) {
             </Form>
     );
 }
+
+const styles = StyleSheet.create({
+    rowContainer : {
+        flex: 1,
+        flexDirection: 'column', // 혹은 'column'
+        alignItems:'flex-start'
+    },
+    mapStyle: {
+      width: Dimensions.get('window').width,
+      height: Dimensions.get('window').height/2,
+    },
+  });
